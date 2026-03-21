@@ -1,6 +1,8 @@
 "use client";
 
 import { services } from '@/data';
+import HardwareAnimation from '@/components/ui/HardwareAnimation';
+import SoftwareAnimation from '@/components/ui/SoftwareAnimation';
 import { motion } from 'framer-motion';
 import { Check, ArrowRight, X } from 'lucide-react';
 import { useState } from 'react';
@@ -10,14 +12,16 @@ export default function Services() {
 
     return (
         <section id="services" className="py-24 bg-black relative overflow-hidden">
-            {/* Ambient Background Glows */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[128px] -z-10 opacity-50 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[128px] -z-10 opacity-50 pointer-events-none" />
+            <HardwareAnimation />
+            <SoftwareAnimation />
+            {/* Ambient Background Glows - Unified to Brand Purple */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[rgb(var(--primary-color))]/20 rounded-full blur-[128px] -z-10 opacity-50 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[rgb(var(--primary-color))]/20 rounded-full blur-[128px] -z-10 opacity-50 pointer-events-none" />
 
             <div className="container max-w-[1600px] mx-auto px-4 md:px-8 xl:px-12">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6">Expertise & Innovation</h2>
-                    <p className="text-gray-400 max-w-5xl mx-auto text-lg md:text-xl leading-relaxed">
+                    <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 drop-shadow-lg">Expertise & <span className="text-[rgb(var(--primary-color))]">Innovation</span></h2>
+                    <p className="text-white brightness-200 opacity-90 max-w-5xl mx-auto text-lg md:text-xl leading-relaxed">
                         Industry-ready solutions teaching Generative AI, Machine Learning, Data Science, and NO-CODE Automation.
                     </p>
                 </div>
@@ -30,11 +34,11 @@ export default function Services() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="group relative p-8 rounded-3xl bg-gray-900/50 backdrop-blur-sm border border-gray-800 shadow-sm hover:shadow-[0_0_30px_-5px_rgba(255,140,0,0.3)] transition-all duration-300 flex flex-col h-full hover:border-orange-500/50 hover:-translate-y-1"
+                            className="group relative p-8 rounded-3xl bg-gray-900/95 backdrop-blur-sm border border-white/10 shadow-sm hover:shadow-[0_0_30px_-5px_rgba(168,85,247,0.3)] transition-all duration-300 flex flex-col h-full hover:border-[rgb(var(--primary-color))]/50 hover:-translate-y-1"
                         >
                             <div className="flex justify-between items-start mb-6">
-                                <div className="w-14 h-14 bg-orange-900/20 rounded-2xl flex items-center justify-center p-3 group-hover:bg-[rgb(var(--primary-color))] transition-colors duration-300">
-                                    <service.icon className="w-8 h-8 text-orange-500 group-hover:text-white transition-colors duration-300" strokeWidth={1.5} />
+                                <div className="w-14 h-14 bg-[rgb(var(--primary-color))]/20 rounded-2xl flex items-center justify-center p-3 group-hover:bg-[rgb(var(--primary-color))] transition-colors duration-300 shadow-lg shadow-[rgb(var(--primary-color))]/10">
+                                    <service.icon className="w-8 h-8 text-white group-hover:text-white transition-colors duration-300" strokeWidth={1.5} />
                                 </div>
                                 {service.tag && (
                                     <span className="px-3 py-1 text-xs font-semibold text-gray-400 bg-gray-800 rounded-lg border border-gray-700">
@@ -44,13 +48,13 @@ export default function Services() {
                             </div>
 
                             <h3 className="text-xl font-bold text-white mb-4 group-hover:text-[rgb(var(--primary-color))] transition-colors">{service.title}</h3>
-                            <p className="text-gray-400 leading-relaxed mb-6">{service.description}</p>
+                            <p className="text-white opacity-80 leading-relaxed mb-6">{service.description}</p>
 
                             <div className="mt-auto space-y-3 mb-8">
                                 {service.features?.slice(0, 3).map((feature, i) => (
                                     <div key={i} className="flex items-start gap-3">
-                                        <Check className="w-4 h-4 text-orange-500 mt-1 flex-shrink-0" />
-                                        <span className="text-sm text-gray-400">{feature}</span>
+                                        <Check className="w-4 h-4 text-[rgb(var(--primary-color))] mt-1 flex-shrink-0" />
+                                        <span className="text-sm text-white opacity-80">{feature}</span>
                                     </div>
                                 ))}
                                 {service.features && service.features.length > 3 && (
@@ -60,7 +64,7 @@ export default function Services() {
 
                             <button
                                 onClick={() => setExpandedService(service.title)}
-                                className="inline-flex items-center text-orange-500 font-bold text-sm hover:gap-2 transition-all group/btn"
+                                className="inline-flex items-center text-[rgb(var(--primary-color))] font-bold text-sm hover:gap-2 transition-all group/btn"
                             >
                                 Learn More <ArrowRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" />
                             </button>
@@ -94,11 +98,11 @@ export default function Services() {
                                             <>
                                                 {/* Header */}
                                                 <div className="flex items-center gap-4 mb-8">
-                                                    <div className="w-16 h-16 bg-orange-900/20 rounded-2xl flex items-center justify-center border border-orange-900/30">
-                                                        <activeService.icon className="w-8 h-8 text-orange-500" />
+                                                    <div className="w-16 h-16 bg-[rgb(var(--primary-color))]/20 rounded-2xl flex items-center justify-center border border-[rgb(var(--primary-color))]/30">
+                                                        <activeService.icon className="w-8 h-8 text-[rgb(var(--primary-color))]" />
                                                     </div>
                                                     <div>
-                                                        <span className="text-sm font-bold text-orange-500 uppercase tracking-wider block mb-1">{activeService.tag}</span>
+                                                        <span className="text-sm font-bold text-[rgb(var(--primary-color))] uppercase tracking-wider block mb-1">{activeService.tag}</span>
                                                         <h3 className="text-3xl font-extrabold text-white">{activeService.title}</h3>
                                                     </div>
                                                 </div>
@@ -106,7 +110,7 @@ export default function Services() {
                                                 {/* Service Overview */}
                                                 <div className="mb-10">
                                                     <h4 className="flex items-center gap-2 text-lg font-bold text-white mb-3">
-                                                        <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+                                                        <svg className="w-5 h-5 text-[rgb(var(--primary-color))]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
                                                         Service Overview
                                                     </h4>
                                                     <p className="text-gray-300 leading-relaxed text-lg">
@@ -135,13 +139,13 @@ export default function Services() {
                                                     {/* Use Cases */}
                                                     <div className="bg-black/50 rounded-2xl p-6 border border-gray-800">
                                                         <h5 className="flex items-center gap-2 text-lg font-bold text-white mb-4">
-                                                            <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                                            <svg className="w-5 h-5 text-[rgb(var(--primary-color))]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                                                             Use Cases
                                                         </h5>
                                                         <ul className="space-y-3">
                                                             {activeService.useCases?.map((useCase, i) => (
                                                                 <li key={i} className="flex items-center gap-3">
-                                                                    <div className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+                                                                    <div className="w-1.5 h-1.5 rounded-full bg-[rgb(var(--primary-color))]" />
                                                                     <span className="text-sm text-gray-300">{useCase}</span>
                                                                 </li>
                                                             )) || <li className="text-gray-500 text-sm">Use cases listing...</li>}

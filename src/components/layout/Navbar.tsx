@@ -153,7 +153,7 @@ export default function Navbar() {
                                             className={cn(
                                                 "flex items-center justify-between p-4 rounded-xl border transition-all",
                                                 selectedLang.code === lang.code 
-                                                    ? "border-[rgb(var(--primary-color))] bg-orange-950/20 text-white" 
+                                                    ? "border-[rgb(var(--primary-color))] bg-[rgb(var(--primary-color))]/20 text-white" 
                                                     : "border-white/5 bg-white/5 text-gray-400"
                                             )}
                                         >

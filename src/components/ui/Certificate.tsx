@@ -39,7 +39,7 @@ export default function Certificate({ studentName, courseTitle, date, onClose }:
                 <button
                     onClick={handlePrint}
                     aria-label="Download Certificate"
-                    className="flex items-center gap-2 px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-full transition-all font-bold shadow-xl hover:scale-105 active:scale-95"
+                    className="flex items-center gap-2 px-6 py-3 bg-[rgb(var(--primary-color))] hover:opacity-80 text-white rounded-full transition-all font-bold shadow-xl hover:scale-105 active:scale-95"
                 >
                     <Download className="w-5 h-5" /> Download Certificate
                 </button>
@@ -56,12 +56,12 @@ export default function Certificate({ studentName, courseTitle, date, onClose }:
             <div className="relative w-full max-w-5xl aspect-[1.414/1] bg-white text-black p-8 md:p-12 shadow-2xl print:shadow-none print:w-screen print:h-screen print:max-w-none print:absolute print:inset-0 print:m-0">
 
                 {/* Decorative Border */}
-                <div className="absolute inset-4 border-4 border-double border-orange-900/20 pointer-events-none" />
-                <div className="absolute inset-6 border border-orange-600/30 pointer-events-none" />
+                <div className="absolute inset-4 border-4 border-double border-[rgb(var(--primary-color))]/20 pointer-events-none" />
+                <div className="absolute inset-6 border border-[rgb(var(--primary-color))]/30 pointer-events-none" />
 
                 {/* Corner Decoration */}
-                <div className="absolute top-6 left-6 w-16 h-16 border-t-4 border-l-4 border-orange-600 rounded-tl-3xl opacity-50" />
-                <div className="absolute bottom-6 right-6 w-16 h-16 border-b-4 border-r-4 border-orange-600 rounded-br-3xl opacity-50" />
+                <div className="absolute top-6 left-6 w-16 h-16 border-t-4 border-l-4 border-[rgb(var(--primary-color))] rounded-tl-3xl opacity-50" />
+                <div className="absolute bottom-6 right-6 w-16 h-16 border-b-4 border-r-4 border-[rgb(var(--primary-color))] rounded-br-3xl opacity-50" />
 
                 <div className="h-full flex flex-col items-center justify-between text-center py-8 relative z-10">
 
@@ -85,8 +85,8 @@ export default function Certificate({ studentName, courseTitle, date, onClose }:
                     </div>
 
                     {/* Student Name */}
-                    <div className="border-b-2 border-orange-900/20 px-12 py-2 min-w-[50%]">
-                        <h2 className="text-3xl md:text-5xl font-serif font-bold text-orange-700 capitalize">
+                    <div className="border-b-2 border-[rgb(var(--primary-color))]/20 px-12 py-2 min-w-[50%]">
+                        <h2 className="text-3xl md:text-5xl font-serif font-bold text-[rgb(var(--primary-color))] capitalize">
                             {studentName}
                         </h2>
                     </div>
@@ -114,16 +114,16 @@ export default function Certificate({ studentName, courseTitle, date, onClose }:
                         </div>
 
                         {/* Gold Seal Effect */}
-                        <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-orange-600/30 flex items-center justify-center p-2 bg-orange-50">
-                            <div className="w-full h-full rounded-full border-2 border-dashed border-orange-600 flex items-center justify-center">
-                                <span className="text-orange-800 font-bold text-xs uppercase tracking-widest -rotate-12 text-center">
+                        <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-[rgb(var(--primary-color))]/30 flex items-center justify-center p-2 bg-[rgb(var(--primary-color))]/5">
+                            <div className="w-full h-full rounded-full border-2 border-dashed border-[rgb(var(--primary-color))] flex items-center justify-center">
+                                <span className="text-[rgb(var(--primary-color))] font-bold text-xs uppercase tracking-widest -rotate-12 text-center">
                                     Verified<br />Certification
                                 </span>
                             </div>
                         </div>
 
                         <div className="text-center">
-                            <div className="font-script text-3xl text-orange-800 mb-1" style={{ fontFamily: 'cursive' }}>
+                            <div className="font-script text-3xl text-[rgb(var(--primary-color))] mb-1" style={{ fontFamily: 'cursive' }}>
                                 Jaikeerthi
                             </div>
                             <div className="border-t border-gray-400 w-48 pt-2">

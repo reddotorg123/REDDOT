@@ -114,7 +114,7 @@ export default function Chatbot() {
                                 >
                                     <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${msg.role === 'user'
                                         ? 'bg-gray-200 text-gray-600'
-                                        : 'bg-orange-50 text-orange-600 border border-orange-100'
+                                        : 'bg-[rgb(var(--primary-color))]/10 text-[rgb(var(--primary-color))] border border-[rgb(var(--primary-color))]/20'
                                         }`}>
                                         {msg.role === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
                                     </div>
@@ -145,12 +145,12 @@ export default function Chatbot() {
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
                                 placeholder="Ask me anything..."
-                                className="flex-1 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-orange-600 focus:ring-1 focus:ring-orange-600 transition-all text-sm text-gray-900 placeholder:text-gray-400"
+                                className="flex-1 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-[rgb(var(--primary-color))] focus:ring-1 focus:ring-[rgb(var(--primary-color))] transition-all text-sm text-gray-900 placeholder:text-gray-400"
                             />
                             <button
                                 type="submit"
                                 disabled={isLoading || !input.trim()}
-                                className="p-2.5 bg-[rgb(var(--primary-color))] text-white rounded-xl hover:bg-orange-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
+                                className="p-2.5 bg-[rgb(var(--primary-color))] text-white rounded-xl hover:opacity-80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
                             >
                                 <Send className="w-5 h-5" />
                             </button>

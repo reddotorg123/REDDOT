@@ -1,6 +1,7 @@
 "use client";
 
 import { contactInfo, services } from '@/data';
+import GlobeTechAnimation from '@/components/ui/GlobeTechAnimation';
 import { Mail, Phone, MapPin, Send, Clock, MessageCircle } from 'lucide-react';
 import { useState } from 'react';
 
@@ -54,21 +55,22 @@ export default function Contact() {
 
     return (
         <section id="contact" className="py-24 bg-black relative overflow-hidden">
+            <GlobeTechAnimation />
             {/* Ambient Background Glows */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-orange-600/5 rounded-full blur-[150px] -z-10 pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[rgb(var(--primary-color))]/10 rounded-full blur-[150px] -z-10 pointer-events-none" />
 
             <div className="container max-w-[1600px] mx-auto px-4 md:px-8 xl:px-12">
                 {/* Section Header */}
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">Ready to Start Your AI Journey?</h2>
-                    <p className="text-gray-400 text-lg md:text-xl max-w-5xl mx-auto leading-relaxed">
+                    <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 drop-shadow-lg">Ready to Start Your <span className="text-[rgb(var(--primary-color))]">AI Journey?</span></h2>
+                    <p className="text-white opacity-95 text-lg md:text-xl max-w-5xl mx-auto leading-relaxed">
                         Let's discuss how AI can transform your business. Get a free consultation and discover the possibilities that intelligent automation can unlock.
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
                     {/* Contact Form (Left - 2 Cols) */}
-                    <div className="lg:col-span-2 bg-gray-900/80 backdrop-blur-md p-8 rounded-3xl border border-gray-800 shadow-xl shadow-black/50 hover:shadow-orange-500/10 transition-shadow duration-500">
+                    <div className="lg:col-span-2 bg-gray-900/95 backdrop-blur-md p-8 rounded-3xl border border-white/10 shadow-xl shadow-black/50 hover:shadow-[rgb(var(--primary-color))]/10 transition-shadow duration-500">
                         <h3 className="text-2xl font-bold text-white mb-8">Send us a Message</h3>
                         <form onSubmit={handleSubmit} className="space-y-6">
                             {/* Row 1: Name, Email, Phone */}
@@ -195,24 +197,24 @@ export default function Contact() {
 
                     {/* Contact Info (Right - 1 Col) */}
                     <div className="lg:col-span-1 space-y-8">
-                        <div className="bg-gray-900 p-8 rounded-3xl border border-gray-800 shadow-sm h-full">
+                        <div className="bg-gray-900/95 p-8 rounded-3xl border border-white/10 shadow-xl h-full">
                             <h3 className="text-2xl font-bold text-white mb-8">Contact Information</h3>
 
                             <div className="space-y-8">
                                 <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 bg-orange-900/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                                        <Mail className="w-6 h-6 text-orange-500" />
+                                    <div className="w-12 h-12 bg-[rgb(var(--primary-color))]/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <Mail className="w-6 h-6 text-[rgb(var(--primary-color))]" />
                                     </div>
-                                    <div>
-                                        <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Email</h4>
+                                     <div>
+                                        <h4 className="text-xs font-bold text-white opacity-50 uppercase tracking-wider mb-1">Email</h4>
                                         {Array.isArray(contactInfo.email) ? (
                                             contactInfo.email.map((email) => (
-                                                <a key={email} href={`mailto:${email}`} className="block text-white font-medium hover:text-orange-500 transition-colors">
+                                                <a key={email} href={`mailto:${email}`} className="block text-white font-medium hover:text-[rgb(var(--primary-color))] transition-colors">
                                                     {email}
                                                 </a>
                                             ))
                                         ) : (
-                                            <a href={`mailto:${contactInfo.email}`} className="text-white font-medium hover:text-orange-500 transition-colors">
+                                            <a href={`mailto:${contactInfo.email}`} className="text-white font-medium hover:text-[rgb(var(--primary-color))] transition-colors">
                                                 {contactInfo.email}
                                             </a>
                                         )}
@@ -220,19 +222,19 @@ export default function Contact() {
                                 </div>
 
                                 <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 bg-orange-900/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                                        <Phone className="w-6 h-6 text-orange-500" />
+                                    <div className="w-12 h-12 bg-[rgb(var(--primary-color))]/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <Phone className="w-6 h-6 text-[rgb(var(--primary-color))]" />
                                     </div>
                                     <div>
-                                        <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Phone</h4>
+                                        <h4 className="text-xs font-bold text-white opacity-50 uppercase tracking-wider mb-1">Phone</h4>
                                         {Array.isArray(contactInfo.phone) ? (
                                             contactInfo.phone.map((phone) => (
-                                                <a key={phone} href={`tel:${phone.replace(/\s/g, '')}`} className="block text-white font-medium hover:text-orange-500 transition-colors">
+                                                <a key={phone} href={`tel:${phone.replace(/\s/g, '')}`} className="block text-white font-medium hover:text-[rgb(var(--primary-color))] transition-colors">
                                                     {phone}
                                                 </a>
                                             ))
                                         ) : (
-                                            <a href={`tel:${contactInfo.phone}`} className="text-white font-medium hover:text-orange-500 transition-colors">
+                                            <a href={`tel:${contactInfo.phone}`} className="text-white font-medium hover:text-[rgb(var(--primary-color))] transition-colors">
                                                 {contactInfo.phone}
                                             </a>
                                         )}
@@ -240,11 +242,11 @@ export default function Contact() {
                                 </div>
 
                                 <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 bg-orange-900/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                                        <MapPin className="w-6 h-6 text-orange-500" />
+                                    <div className="w-12 h-12 bg-[rgb(var(--primary-color))]/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <MapPin className="w-6 h-6 text-[rgb(var(--primary-color))]" />
                                     </div>
                                     <div>
-                                        <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Location</h4>
+                                        <h4 className="text-xs font-bold text-white opacity-50 uppercase tracking-wider mb-1">Location</h4>
                                         <p className="text-white font-medium">{contactInfo.location}</p>
                                     </div>
                                 </div>
@@ -254,7 +256,7 @@ export default function Contact() {
                                         <MessageCircle className="w-6 h-6 text-green-500" />
                                     </div>
                                     <div>
-                                        <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">WhatsApp Chat</h4>
+                                        <h4 className="text-xs font-bold text-white opacity-50 uppercase tracking-wider mb-1">WhatsApp Chat</h4>
                                         <div className="space-y-2">
                                             {(() => {
                                                 const primaryPhone = Array.isArray(contactInfo.phone) ? contactInfo.phone[0] : contactInfo.phone;
@@ -276,7 +278,7 @@ export default function Contact() {
                             </div>
 
                             <div className="mt-12 pt-8 border-t border-gray-800">
-                                <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Connect With Us</h4>
+                                <h4 className="text-xs font-bold text-white opacity-50 uppercase tracking-wider mb-4">Connect With Us</h4>
                                 <div className="flex gap-4">
                                     {contactInfo.social.map((social) => (
                                         <a

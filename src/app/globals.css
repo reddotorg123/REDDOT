@@ -7,8 +7,8 @@
   --background-start-rgb: 8, 8, 8;
   /* Obsidian Black #080808 */
   --background-end-rgb: 8, 8, 8;
-  --primary-color: 107, 33, 168;
-  /* Darker Purple #6B21A8 */
+  --primary-color: 168, 85, 247;
+  /* Vibrant Purple #A855F7 */
   --secondary-color: 255, 255, 255;
 }
 
@@ -19,7 +19,7 @@ body {
 }
 
 ::selection {
-  background-color: rgba(107, 33, 168, 0.3);
+  background-color: rgba(168, 85, 247, 0.3);
   color: #fff;
 }
 

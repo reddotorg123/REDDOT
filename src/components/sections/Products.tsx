@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from 'framer-motion';
+import SoftwareAnimation from '@/components/ui/SoftwareAnimation';
+import BlockchainLedgerAnimation from '@/components/ui/BlockchainLedgerAnimation';
 import { products } from '@/data';
 import Image from 'next/image';
 import { ArrowUpRight, Box } from 'lucide-react';
@@ -9,12 +11,14 @@ import Link from 'next/link';
 export default function Products() {
     return (
         <section id="products" className="py-24 bg-black relative overflow-hidden border-t border-white/5">
-            <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-orange-600/5 rounded-full blur-[150px] -z-10 pointer-events-none" />
+            <SoftwareAnimation />
+            <BlockchainLedgerAnimation />
+            <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[rgb(var(--primary-color))]/10 rounded-full blur-[150px] -z-10 pointer-events-none" />
             
             <div className="container max-w-[1600px] mx-auto px-4 md:px-8 xl:px-12">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 uppercase tracking-tight">Our <span className="text-[rgb(var(--primary-color))]">Products</span></h2>
-                    <p className="text-gray-400 max-w-5xl mx-auto text-lg md:text-xl leading-relaxed">
+                    <p className="text-white opacity-90 max-w-5xl mx-auto text-lg md:text-xl leading-relaxed">
                         Discover our suite of proprietary AI applications designed to scale your performance and automate your success.
                     </p>
                 </div>
@@ -41,10 +45,10 @@ export default function Products() {
                                 </div>
 
                                 {/* App Name */}
-                                <h3 className="text-lg md:text-xl font-bold text-gray-400 group-hover:text-white transition-colors text-center uppercase tracking-widest">{product.name}</h3>
+                                <h3 className="text-lg md:text-xl font-bold text-white/70 group-hover:text-white transition-colors text-center uppercase tracking-widest">{product.name}</h3>
                                 
                                 {/* Subtle Hover Indicator */}
-                                <span className="text-[10px] font-bold text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity mt-2 uppercase tracking-tighter">Launch App</span>
+                                <span className="text-[10px] font-bold text-[rgb(var(--primary-color))] opacity-0 group-hover:opacity-100 transition-opacity mt-2 uppercase tracking-tighter">Launch App</span>
                             </Link>
                         </motion.div>
                     ))}

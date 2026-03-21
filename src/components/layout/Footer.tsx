@@ -21,29 +21,29 @@ export default function Footer() {
                                 </span>
                             </div>
                         </Link>
-                        <p className="mt-4 text-gray-400 max-w-xs font-medium">
+                        <p className="mt-4 text-white opacity-70 max-w-xs font-medium">
                             Empowering businesses with cutting-edge AI solutions. Automate, Innovate, Dominate.
                         </p>
                     </div>
                     <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                         <div>
-                            <h2 className="mb-6 text-sm font-bold text-white uppercase">Resources</h2>
-                            <ul className="text-gray-400 font-medium">
+                            <h2 className="mb-6 text-sm font-bold text-white uppercase tracking-wider">Resources</h2>
+                            <ul className="text-white/60 font-medium">
                                 <li className="mb-4">
-                                    <Link href="#blog" className="hover:text-orange-500 transition-colors">Blog</Link>
+                                    <Link href="#blog" className="hover:text-[rgb(var(--primary-color))] transition-colors">Blog</Link>
                                 </li>
                                 <li>
-                                    <Link href="#" className="hover:text-orange-500 transition-colors">Documentation</Link>
+                                    <Link href="#" className="hover:text-[rgb(var(--primary-color))] transition-colors">Documentation</Link>
                                 </li>
                             </ul>
                         </div>
                         <div>
-                            <h2 className="mb-6 text-sm font-bold text-white uppercase">Follow us</h2>
-                            <ul className="text-gray-400 font-medium">
+                            <h2 className="mb-6 text-sm font-bold text-white uppercase tracking-wider">Follow us</h2>
+                            <ul className="text-white/60 font-medium">
                                 {contactInfo.social.map((social) => (
                                     <li key={social.name} className="mb-4">
-                                        <Link href={social.href} className="hover:text-orange-500 transition-colors flex items-center gap-2 group">
-                                            <social.icon className="w-4 h-4 group-hover:text-orange-500 transition-colors" />
+                                        <Link href={social.href} className="hover:text-[rgb(var(--primary-color))] transition-colors flex items-center gap-2 group">
+                                            <social.icon className="w-4 h-4 group-hover:text-[rgb(var(--primary-color))] transition-colors" />
                                             {social.name}
                                         </Link>
                                     </li>
@@ -51,13 +51,13 @@ export default function Footer() {
                             </ul>
                         </div>
                         <div>
-                            <h2 className="mb-6 text-sm font-bold text-white uppercase">Legal</h2>
-                            <ul className="text-gray-400 font-medium">
+                            <h2 className="mb-6 text-sm font-bold text-white uppercase tracking-wider">Legal</h2>
+                            <ul className="text-white/60 font-medium">
                                 <li className="mb-4">
-                                    <Link href="#" className="hover:text-orange-500 transition-colors">Privacy Policy</Link>
+                                    <Link href="#" className="hover:text-[rgb(var(--primary-color))] transition-colors">Privacy Policy</Link>
                                 </li>
                                 <li>
-                                    <Link href="#" className="hover:text-orange-500 transition-colors">Terms & Conditions</Link>
+                                    <Link href="#" className="hover:text-[rgb(var(--primary-color))] transition-colors">Terms & Conditions</Link>
                                 </li>
                             </ul>
                         </div>

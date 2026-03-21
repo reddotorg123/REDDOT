@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server';
-import * as XLSX from 'xlsx';
-import * as fs from 'fs';
-import * as path from 'path';
+import { query } from '../../../lib/mysql';
 import nodemailer from 'nodemailer';
 
 export async function POST(request: Request) {
@@ -9,54 +7,13 @@ export async function POST(request: Request) {
         const body = await request.json();
         const { name, email, phone, message, service, budget, timeline } = body;
 
-        const dataDir = path.join(process.cwd(), 'data');
-        const excelPath = path.join(dataDir, 'contacts.xlsx');
-        const csvPath = path.join(dataDir, 'contacts.csv');
-
-        if (!fs.existsSync(dataDir)) {
-            fs.mkdirSync(dataDir);
-        }
-
-        const date = new Date().toLocaleString();
-        const newRowArray = [date, name, email, phone, service, budget, timeline, message];
-
-        // --- 1. Excel Storage ---
-        let workbook;
-        let worksheet;
-
-        if (fs.existsSync(excelPath)) {
-            const fileBuffer = fs.readFileSync(excelPath);
-            workbook = XLSX.read(fileBuffer, { type: 'buffer' });
-            worksheet = workbook.Sheets[workbook.SheetNames[0]];
-        } else {
-            workbook = XLSX.utils.book_new();
-            worksheet = XLSX.utils.aoa_to_sheet([['Date', 'Name', 'Email', 'Phone', 'Service', 'Budget', 'Timeline', 'Message']]);
-            XLSX.utils.book_append_sheet(workbook, worksheet, 'Contacts');
-        }
-
-        const newRowObj = {
-            Date: date,
-            Name: name,
-            Email: email,
-            Phone: phone,
-            Service: service,
-            Budget: budget,
-            Timeline: timeline,
-            Message: message
-        };
-
-        XLSX.utils.sheet_add_json(worksheet, [newRowObj], { skipHeader: true, origin: -1 });
-        const xlsxData = XLSX.write(workbook, { bookType: 'xlsx', type: 'buffer' });
-        fs.writeFileSync(excelPath, xlsxData);
-
-        // --- 2. CSV Storage ---
-        const csvRow = newRowArray.map(field => `"${(field || '').toString().replace(/"/g, '""')}"`).join(',') + '\n';
-        if (!fs.existsSync(csvPath)) {
-            const header = ['Date', 'Name', 'Email', 'Phone', 'Service', 'Budget', 'Timeline', 'Message'].map(f => `"${f}"`).join(',') + '\n';
-            fs.writeFileSync(csvPath, header + csvRow);
-        } else {
-            fs.appendFileSync(csvPath, csvRow);
-        }
+        // --- MySQL Storage ---
+        const insertQuery = `
+          INSERT INTO contacts (name, email, phone, service, budget, timeline, message)
+          VALUES (?, ?, ?, ?, ?, ?, ?)
+        `;
+        const values = [name, email, phone, service, budget, timeline, message];
+        await query(insertQuery, values);
 
         // --- 3. Email Notification ---
         // Using a basic transporter (Gmail/SMTP requires proper env vars)

@@ -1,6 +1,8 @@
 "use client";
 
 import { projects } from '@/data';
+import GlobeTechAnimation from '@/components/ui/GlobeTechAnimation';
+import NeuralNetworkAnimation from '@/components/ui/NeuralNetworkAnimation';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, CheckCircle2, Lightbulb, Zap, Bot } from 'lucide-react';
 import Link from 'next/link';
@@ -13,13 +15,15 @@ export default function Projects() {
 
     return (
         <section id="projects" className="py-24 bg-black relative border-y border-gray-800 overflow-hidden">
-            {/* Ambient Background Glows */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-orange-600/5 rounded-full blur-[150px] -z-10 pointer-events-none" />
+            <GlobeTechAnimation />
+            <NeuralNetworkAnimation />
+            {/* Ambient Background Glows - Unified to Brand Purple */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[rgb(var(--primary-color))]/10 rounded-full blur-[150px] -z-10 pointer-events-none" />
 
             <div className="container max-w-[1600px] mx-auto px-4 md:px-8 xl:px-12">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 uppercase tracking-tighter">What We Think</h2>
-                    <p className="text-gray-400 max-w-5xl mx-auto text-lg md:text-xl leading-relaxed italic">"Philosophy meets Code. Our thoughts on AI, SaaS, and the future of digital transformation."</p>
+                    <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 uppercase tracking-tighter drop-shadow-lg">What We <span className="text-[rgb(var(--primary-color))]">Think</span></h2>
+                    <p className="text-white opacity-95 max-w-5xl mx-auto text-lg md:text-xl leading-relaxed italic">"Philosophy meets Code. Our thoughts on AI, SaaS, and the future of digital transformation."</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-12">
@@ -29,7 +33,7 @@ export default function Projects() {
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            className="group relative overflow-hidden rounded-2xl bg-gray-900/50 backdrop-blur-sm border border-gray-800 shadow-sm hover:shadow-[0_0_30px_-5px_rgba(255,140,0,0.3)] transition-all duration-300 flex flex-col hover:border-orange-500/50 hover:-translate-y-1"
+                            className="group relative overflow-hidden rounded-2xl bg-gray-900/95 backdrop-blur-sm border border-white/10 shadow-sm hover:shadow-[0_0_30px_-5px_rgba(168,85,247,0.3)] transition-all duration-300 flex flex-col hover:border-[rgb(var(--primary-color))]/50 hover:-translate-y-1"
                         >
                             <div className="relative h-48 w-full bg-gray-800 overflow-hidden shrink-0">
                                 <div className="absolute inset-0 bg-gray-800 flex items-center justify-center text-gray-500">
@@ -54,21 +58,21 @@ export default function Projects() {
 
                             <div className="p-6 flex flex-col flex-grow">
                                 <div className="mb-4 flex-grow">
-                                    <span className="text-xs font-bold text-orange-500 uppercase tracking-wider">
+                                    <span className="text-xs font-bold text-[rgb(var(--primary-color))] uppercase tracking-wider">
                                         {project.category}
                                     </span>
                                     <h3 className="text-xl font-bold text-white mt-1 mb-2 group-hover:text-[rgb(var(--primary-color))] transition-colors">{project.title}</h3>
-                                    <p className="text-gray-400 text-sm line-clamp-3">{project.description}</p>
+                                    <p className="text-white opacity-80 text-sm line-clamp-3 leading-relaxed">{project.description}</p>
                                 </div>
 
                                 <div className="flex flex-wrap gap-2 mb-6">
                                     {project.technologies.slice(0, 3).map((tech) => (
-                                        <span key={tech} className="px-2 py-1 text-xs text-gray-400 bg-gray-800 rounded border border-gray-700">
+                                        <span key={tech} className="px-2 py-1 text-xs text-white opacity-70 bg-gray-800 rounded border border-white/5 group-hover:border-[rgb(var(--primary-color))]/20">
                                             {tech}
                                         </span>
                                     ))}
                                     {project.technologies.length > 3 && (
-                                        <span className="px-2 py-1 text-xs text-gray-400 bg-gray-800 rounded border border-gray-700">
+                                        <span className="px-2 py-1 text-xs text-white opacity-70 bg-gray-800 rounded border border-white/5 group-hover:border-[rgb(var(--primary-color))]/20">
                                             +{project.technologies.length - 3}
                                         </span>
                                     )}
@@ -77,7 +81,7 @@ export default function Projects() {
                                 <div className="flex gap-4 pt-4 border-t border-gray-800 mt-auto">
                                     <button
                                         onClick={() => setSelectedProject(project)}
-                                        className="flex items-center gap-2 text-sm text-orange-500 hover:text-orange-400 font-bold focus:outline-none transition-colors"
+                                        className="flex items-center gap-2 text-sm text-[rgb(var(--primary-color))] hover:text-white font-bold focus:outline-none transition-colors"
                                     >
                                         <ExternalLink className="w-4 h-4" /> View Details
                                     </button>
@@ -144,11 +148,11 @@ export default function Projects() {
                                 </div>
 
                                 <div className="space-y-6">
-                                    <div className="bg-orange-900/10 p-5 rounded-xl border border-orange-900/30">
+                                    <div className="bg-[rgb(var(--primary-color))]/10 p-5 rounded-xl border border-[rgb(var(--primary-color))]/30">
                                         <h4 className="font-bold text-white mb-2 flex items-center gap-2">
-                                            <Zap className="w-5 h-5 text-orange-500" /> The Challenge
+                                            <Zap className="w-5 h-5 text-[rgb(var(--primary-color))]" /> The Challenge
                                         </h4>
-                                        <p className="text-sm text-gray-400">
+                                        <p className="text-sm text-white opacity-80">
                                             {(selectedProject as any).details.challenge}
                                         </p>
                                     </div>
@@ -168,7 +172,7 @@ export default function Projects() {
                         <div className="flex justify-end pt-4 border-t border-gray-800">
                             <Link
                                 href={selectedProject.link}
-                                className="inline-flex items-center gap-2 px-6 py-3 bg-[rgb(var(--primary-color))] text-white rounded-lg hover:bg-orange-600 transition-colors font-bold shadow-lg shadow-orange-600/20"
+                                className="inline-flex items-center gap-2 px-6 py-3 bg-[rgb(var(--primary-color))] text-white rounded-lg hover:opacity-80 transition-all font-bold shadow-lg shadow-[rgb(var(--primary-color))]/20"
                             >
                                 Visit Project <ExternalLink className="w-4 h-4" />
                             </Link>

@@ -32,14 +32,14 @@ export default function Hero() {
                         Innovative <span className="text-[rgb(var(--primary-color))]">AI Solutions</span><br className="hidden md:block" /> for Modern Business
                     </h1>
 
-                    <p className="text-xl md:text-2xl xl:text-3xl text-gray-400 max-w-5xl mx-auto mb-12 font-light leading-relaxed">
+                    <p className="text-xl md:text-2xl xl:text-3xl text-white opacity-70 max-w-5xl mx-auto mb-12 font-light leading-relaxed">
                         Transforming operations with <span className="font-semibold text-white">Autonomous Agents</span>, <span className="font-semibold text-white">Multi-Agent Systems</span>, and <span className="font-semibold text-white">Custom LLMs</span>.
                     </p>
 
                     <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-20 animate-fade-in-up delay-200">
                         <Link
                             href="#contact"
-                            className="px-8 py-4 rounded-lg bg-[rgb(var(--primary-color))] text-white font-bold hover:bg-orange-600 transition-all shadow-lg hover:shadow-orange-500/25 flex items-center gap-2"
+                            className="px-8 py-4 rounded-lg bg-[rgb(var(--primary-color))] text-white font-bold hover:opacity-80 transition-all shadow-lg hover:shadow-[rgb(var(--primary-color))]/25 flex items-center gap-2"
                         >
                             Get Started <ArrowRight className="w-5 h-5" />
                         </Link>
@@ -71,7 +71,7 @@ export default function Hero() {
                     ].map((stat, index) => (
                         <div key={index} className="text-center">
                             <div className="text-4xl font-extrabold text-[rgb(var(--secondary-color))] mb-1">{stat.value}</div>
-                            <div className="text-xs text-gray-500 uppercase tracking-widest font-semibold">{stat.label}</div>
+                            <div className="text-xs text-white opacity-50 uppercase tracking-widest font-semibold">{stat.label}</div>
                         </div>
                     ))}
                 </motion.div>
