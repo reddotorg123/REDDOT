@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X, Globe, ChevronDown } from 'lucide-react';
@@ -12,19 +12,33 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedLang, setSelectedLang] = useState(languages[0]);
 
+    useEffect(() => {
+        const match = document.cookie.match(/googtrans=\/en\/([a-z]{2})/i);
+        if (match && match[1]) {
+            const code = match[1].toUpperCase();
+            const lang = languages.find(l => l.code === code);
+            if (lang) {
+                setSelectedLang(lang);
+            }
+        }
+    }, []);
+
     return (
         <nav className="fixed w-full z-50 top-0 start-0 border-b border-white/10 bg-black/60 backdrop-blur-xl transition-all duration-300">
             <div className="max-w-[1400px] flex flex-wrap items-center justify-between mx-auto p-4 md:px-12">
                 <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-                    <div className="relative h-14 w-44 transition-transform duration-300 hover:scale-105">
-                        <Image
-                            src="/images/reddot-logo.png"
-                            alt="REDDOT"
-                            fill
-                            className="object-contain mix-blend-screen"
-                            priority
-                            sizes="176px"
-                        />
+                    <div className="flex items-center group transition-all duration-500 hover:scale-105 h-14">
+                        {/* The Stylized 'R' with theme color and glowing pulse animation */}
+                        <div className="relative flex items-center justify-center">
+                            <span className="text-4xl font-black tracking-tighter text-[rgb(var(--primary-color))] uppercase relative z-10 transition-transform duration-500 group-hover:-translate-y-0.5">
+                                R
+                            </span>
+                            <span className="absolute inset-0 bg-[rgb(var(--primary-color))] blur-lg opacity-40 animate-pulse transition-opacity duration-300 group-hover:opacity-80"></span>
+                        </div>
+                        {/* The 'EDDOT' text in white */}
+                        <span className="text-4xl font-bold tracking-tight text-white uppercase ml-[1px] transition-transform duration-500 group-hover:translate-x-0.5">
+                            EDDOT
+                        </span>
                     </div>
                 </Link>
                 
@@ -43,7 +57,16 @@ export default function Navbar() {
                                 {languages.map((lang) => (
                                     <li key={lang.code}>
                                         <button
-                                            onClick={() => setSelectedLang(lang)}
+                                            onClick={() => {
+                                                setSelectedLang(lang);
+                                                const gLang = lang.code.toLowerCase();
+                                                if (gLang === 'en') {
+                                                    document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+                                                } else {
+                                                    document.cookie = `googtrans=/en/${gLang}; path=/;`;
+                                                }
+                                                window.location.reload();
+                                            }}
                                             className={cn(
                                                 "w-full text-left px-5 py-3 text-sm font-medium transition-colors hover:bg-white/5",
                                                 selectedLang.code === lang.code ? "text-[rgb(var(--primary-color))]" : "text-gray-300"
@@ -119,6 +142,13 @@ export default function Navbar() {
                                             onClick={() => {
                                                 setSelectedLang(lang);
                                                 setIsOpen(false);
+                                                const gLang = lang.code.toLowerCase();
+                                                if (gLang === 'en') {
+                                                    document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+                                                } else {
+                                                    document.cookie = `googtrans=/en/${gLang}; path=/;`;
+                                                }
+                                                window.location.reload();
                                             }}
                                             className={cn(
                                                 "flex items-center justify-between p-4 rounded-xl border transition-all",

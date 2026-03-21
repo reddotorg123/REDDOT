@@ -67,13 +67,16 @@ export default function Certificate({ studentName, courseTitle, date, onClose }:
 
                     {/* Header */}
                     <div className="space-y-4">
-                        <div className="relative w-48 h-16 mx-auto mb-6">
-                            <Image
-                                src="/images/reddot-logo.png"
-                                alt="REDDOT Logo"
-                                fill
-                                className="object-contain"
-                            />
+                        <div className="flex items-center justify-center group h-16 w-48 mx-auto mb-6">
+                            <div className="relative flex items-center justify-center">
+                                <span className="text-5xl font-black tracking-tighter text-[rgb(var(--primary-color))] uppercase relative z-10 transition-transform duration-500 group-hover:-translate-y-1">
+                                    R
+                                </span>
+                                <span className="absolute inset-0 bg-[rgb(var(--primary-color))] blur-md opacity-30 animate-pulse transition-opacity duration-300 group-hover:opacity-60"></span>
+                            </div>
+                            <span className="text-5xl font-bold tracking-tight text-gray-900 uppercase ml-[2px] transition-transform duration-500 group-hover:translate-x-1">
+                                EDDOT
+                            </span>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 tracking-wide uppercase">
                             Certificate of Completion

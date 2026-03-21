@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -8,6 +10,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        orange: {
+          ...colors.purple,
+          400: '#7e22ce',
+          500: '#6b21a8',
+          600: '#581c87',
+          900: '#3b0764',
+        },
         primary: {
           50: '#f8fafc',
           100: '#f1f5f9',
@@ -78,8 +87,8 @@ module.exports = {
           '50%': { transform: 'translateY(-10px)' },
         },
         glow: {
-          '0%': { boxShadow: '0 0 5px #f59e0b, 0 0 10px #f59e0b, 0 0 15px #f59e0b' },
-          '100%': { boxShadow: '0 0 10px #f59e0b, 0 0 20px #f59e0b, 0 0 30px #f59e0b' },
+          '0%': { boxShadow: '0 0 5px #6b21a8, 0 0 10px #6b21a8, 0 0 15px #6b21a8' },
+          '100%': { boxShadow: '0 0 10px #6b21a8, 0 0 20px #6b21a8, 0 0 30px #6b21a8' },
         },
       },
       backgroundImage: {

@@ -9,14 +9,16 @@ export default function Footer() {
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">
                         <Link href="/" className="flex items-center mb-4">
-                            <div className="relative h-14 w-44">
-                                <Image
-                                    src="/images/reddot-logo.png"
-                                    alt="REDDOT"
-                                    fill
-                                    className="object-contain mix-blend-screen"
-                                    sizes="176px"
-                                />
+                            <div className="flex items-center group transition-all duration-500 hover:scale-105 h-14">
+                                <div className="relative flex items-center justify-center">
+                                    <span className="text-4xl font-black tracking-tighter text-[rgb(var(--primary-color))] uppercase relative z-10 transition-transform duration-500 group-hover:-translate-y-0.5">
+                                        R
+                                    </span>
+                                    <span className="absolute inset-0 bg-[rgb(var(--primary-color))] blur-lg opacity-40 animate-pulse transition-opacity duration-300 group-hover:opacity-80"></span>
+                                </div>
+                                <span className="text-4xl font-bold tracking-tight text-white uppercase ml-[1px] transition-transform duration-500 group-hover:translate-x-0.5">
+                                    EDDOT
+                                </span>
                             </div>
                         </Link>
                         <p className="mt-4 text-gray-400 max-w-xs font-medium">

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -21,6 +22,21 @@ export default function RootLayout({
     return (
         <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
             <body className={inter.className} suppressHydrationWarning>
+                
+                {/* --- Google Translate Setup --- */}
+                <div id="google_translate_element" className="hidden"></div>
+                <Script strategy="afterInteractive" id="google-translate-script">
+                    {`
+                        function googleTranslateElementInit() {
+                            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                        }
+                    `}
+                </Script>
+                <Script 
+                    strategy="afterInteractive" 
+                    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+                />
+
                 <ChatProvider>
                     <Navbar />
                     {children}
