@@ -41,9 +41,7 @@
     "@types/react": "$@types/react",
     "@types/react-dom": "$@types/react-dom"
   },
-  "engines": {
-    "node": ">=20.0.0"
-  },
+
   "devDependencies": {
     "autoprefixer": "^10.4.0",
     "eslint": "^8.0.0",

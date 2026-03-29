@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 // Triggering fresh Vercel build with exact Next.js version fix
 const nextConfig = {
-  // Enable standalone build for better performance on Vercel
-  output: 'standalone',
   
   images: {
     remotePatterns: [
