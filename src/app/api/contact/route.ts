@@ -8,13 +8,17 @@ export async function POST(request: Request) {
         const { name, email, phone, message, service, budget, timeline } = body;
 
         // --- Supabase Storage ---
-        const { error: dbError } = await supabase
-            .from('contacts')
-            .insert([{ name, email, phone, service, budget, timeline, message }]);
+        if (supabase) {
+            const { error: dbError } = await supabase
+                .from('contacts')
+                .insert([{ name, email, phone, service, budget, timeline, message }]);
 
-        if (dbError) {
-            console.error('Supabase error:', dbError);
-            throw new Error('Failed to save to database');
+            if (dbError) {
+                console.error('Supabase error:', dbError);
+                // Continue with email even if DB fails, or throw if required
+            }
+        } else {
+            console.warn('Supabase client not initialized, skipping database storage');
         }
 
         // --- 3. Email Notification ---
