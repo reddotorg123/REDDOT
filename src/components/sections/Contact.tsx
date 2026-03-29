@@ -61,17 +61,17 @@ export default function Contact() {
 
             <div className="container max-w-[1600px] mx-auto px-4 md:px-8 xl:px-12">
                 {/* Section Header */}
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 drop-shadow-lg">Ready to Start Your <span className="text-[rgb(var(--primary-color))]">AI Journey?</span></h2>
-                    <p className="text-white opacity-95 text-lg md:text-xl max-w-5xl mx-auto leading-relaxed">
+                <div className="text-center mb-10 md:mb-16 px-4">
+                    <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 md:mb-6 drop-shadow-lg">Ready to Start Your <span className="text-[rgb(var(--primary-color))]">AI Journey?</span></h2>
+                    <p className="text-white opacity-95 text-base md:text-xl max-w-5xl mx-auto leading-relaxed">
                         Let's discuss how AI can transform your business. Get a free consultation and discover the possibilities that intelligent automation can unlock.
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
                     {/* Contact Form (Left - 2 Cols) */}
-                    <div className="lg:col-span-2 bg-gray-900/95 backdrop-blur-md p-8 rounded-3xl border border-white/10 shadow-xl shadow-black/50 hover:shadow-[rgb(var(--primary-color))]/10 transition-shadow duration-500">
-                        <h3 className="text-2xl font-bold text-white mb-8">Send us a Message</h3>
+                    <div className="lg:col-span-2 bg-gray-900/95 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-white/10 shadow-xl shadow-black/50 hover:shadow-[rgb(var(--primary-color))]/10 transition-shadow duration-500">
+                        <h3 className="text-xl md:text-2xl font-bold text-white mb-6 md:mb-8">Send us a Message</h3>
                         <form onSubmit={handleSubmit} className="space-y-6">
                             {/* Row 1: Name, Email, Phone */}
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -209,12 +209,12 @@ export default function Contact() {
                                         <h4 className="text-xs font-bold text-white opacity-50 uppercase tracking-wider mb-1">Email</h4>
                                         {Array.isArray(contactInfo.email) ? (
                                             contactInfo.email.map((email) => (
-                                                <a key={email} href={`mailto:${email}`} className="block text-white font-medium hover:text-[rgb(var(--primary-color))] transition-colors">
+                                                <a key={email} href={`mailto:${email}`} className="block text-white font-medium hover:text-[rgb(var(--primary-color))] transition-colors break-words">
                                                     {email}
                                                 </a>
                                             ))
                                         ) : (
-                                            <a href={`mailto:${contactInfo.email}`} className="text-white font-medium hover:text-[rgb(var(--primary-color))] transition-colors">
+                                            <a href={`mailto:${contactInfo.email}`} className="text-white font-medium hover:text-[rgb(var(--primary-color))] transition-colors break-words">
                                                 {contactInfo.email}
                                             </a>
                                         )}
@@ -234,7 +234,7 @@ export default function Contact() {
                                                 </a>
                                             ))
                                         ) : (
-                                            <a href={`tel:${contactInfo.phone}`} className="text-white font-medium hover:text-[rgb(var(--primary-color))] transition-colors">
+                                            <a href={`tel:${contactInfo.phone}`} className="text-white font-medium hover:text-[rgb(var(--primary-color))] transition-colors break-words">
                                                 {contactInfo.phone}
                                             </a>
                                         )}
@@ -247,7 +247,7 @@ export default function Contact() {
                                     </div>
                                     <div>
                                         <h4 className="text-xs font-bold text-white opacity-50 uppercase tracking-wider mb-1">Location</h4>
-                                        <p className="text-white font-medium">{contactInfo.location}</p>
+                                        <p className="text-white font-medium break-words">{contactInfo.location}</p>
                                     </div>
                                 </div>
 

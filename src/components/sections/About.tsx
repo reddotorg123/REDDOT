@@ -203,44 +203,10 @@ export default function About() {
                  * BLOCK 2: TEAM EXP & ACHIEVEMENTS
                  * ==========================================
                  */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div className="grid grid-cols-1 gap-12 max-w-5xl mx-auto">
                     
-                    {/* --- LEFT COL: CONTACT (Span 6) --- */}
-                    <div className="lg:col-span-6 flex flex-col justify-center">
-                        {/* Contact Form Links Panel */}
-                        <div className="p-8 rounded-3xl border border-[rgb(var(--primary-color))]/30 bg-[rgb(var(--primary-color))]/10 shadow-sm">
-                            <h3 className="text-xl font-bold text-white mb-6">Get In Touch</h3>
-                            <div className="space-y-4 mb-8">
-                                <div className="flex items-center gap-3 text-gray-200 hover:text-white transition-colors group">
-                                    <Mail className="w-5 h-5 text-[rgb(var(--primary-color))] group-hover:scale-110 transition-transform" />
-                                    <a href="mailto:keerthijai909@gmail.com" className="font-medium">keerthijai909@gmail.com</a>
-                                </div>
-                                <div className="flex items-center gap-3 text-gray-200 hover:text-white transition-colors group">
-                                    <Phone className="w-5 h-5 text-[rgb(var(--primary-color))] group-hover:scale-110 transition-transform" />
-                                    <a href="tel:+918072163133" className="font-medium">+91 8072163133</a>
-                                </div>
-                                <div className="flex items-center gap-3 text-gray-200">
-                                    <MapPin className="w-5 h-5 text-[rgb(var(--primary-color))]" />
-                                    <span className="font-medium">Chennai, India</span>
-                                </div>
-                                <div className="flex items-center gap-3 text-gray-200 hover:text-white transition-colors group">
-                                    <Linkedin className="w-5 h-5 text-[rgb(var(--primary-color))] group-hover:scale-110 transition-transform" />
-                                    <a href="https://linkedin.com/in/jai-keerthi-03931b341" target="_blank" rel="noopener noreferrer" className="font-medium">
-                                        linkedin.com/in/jai-keerthi-03931b341
-                                    </a>
-                                </div>
-                            </div>
-                            <Link
-                                href="#contact"
-                                className="block w-full py-4 text-center bg-[rgb(var(--primary-color))] text-white font-bold rounded-xl hover:opacity-80 transition-opacity shadow-lg"
-                            >
-                                Let's Discuss Your Project
-                            </Link>
-                        </div>
-                    </div>
-
-                    {/* --- RIGHT COL: STATS & ACHIEVEMENTS (Span 6) --- */}
-                    <div className="lg:col-span-6 space-y-8">
+                    {/* --- STATS & ACHIEVEMENTS --- */}
+                    <div className="space-y-8">
                         {/* Dynamic Mini Stats Grid */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {stats.map((stat, i) => (

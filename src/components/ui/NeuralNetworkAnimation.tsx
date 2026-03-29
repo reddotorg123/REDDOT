@@ -4,10 +4,21 @@ import { useEffect, useRef } from "react";
 
 export default function NeuralNetworkAnimation() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const isVisible = useRef(true);
 
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
+
+        // Performance Optimization: Intersection Observer
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                isVisible.current = entry.isIntersecting;
+            },
+            { threshold: 0.1 }
+        );
+
+        observer.observe(canvas);
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
@@ -51,6 +62,13 @@ export default function NeuralNetworkAnimation() {
 
         function draw() {
             if (!canvas || !ctx) return;
+            
+            // Performance Optimization: Skip drawing if not visible
+            if (!isVisible.current) {
+                animationFrameId = requestAnimationFrame(draw);
+                return;
+            }
+
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             nodes.forEach((node, i) => {
@@ -97,6 +115,7 @@ export default function NeuralNetworkAnimation() {
         return () => {
             window.removeEventListener("resize", resizeCanvas);
             cancelAnimationFrame(animationFrameId);
+            observer.disconnect();
         };
     }, []);
 

@@ -1,17 +1,54 @@
 "use client";
 
-import { projects } from '@/data';
+import { supabase } from '@/lib/supabase';
+import { projects as staticProjects } from '@/data';
 import GlobeTechAnimation from '@/components/ui/GlobeTechAnimation';
 import NeuralNetworkAnimation from '@/components/ui/NeuralNetworkAnimation';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, CheckCircle2, Lightbulb, Zap, Bot } from 'lucide-react';
+import { ExternalLink, Github, CheckCircle2, Lightbulb, Zap, Bot, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Modal from '@/components/ui/Modal';
 
 export default function Projects() {
-    const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+    const initialProjects = staticProjects.filter(p => p.status !== 'Upcoming');
+    const [projects, setProjects] = useState<typeof staticProjects>(initialProjects);
+    const [isLoading, setIsLoading] = useState(true);
+    const [selectedProject, setSelectedProject] = useState<typeof staticProjects[0] | null>(null);
+
+    const displayedProjects = projects;
+
+    useEffect(() => {
+        const fetchProjects = async () => {
+            try {
+                const { data, error } = await supabase
+                    .from('projects')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+
+                if (error) throw error;
+                if (data && data.length > 0) {
+                    // Deduplicate by title and hide 'Upcoming' projects from the frontend
+                    const seen = new Set();
+                    const filteredData = data.filter(p => {
+                        if (p.status === 'Upcoming') return false;
+                        if (seen.has(p.title)) return false;
+                        seen.add(p.title);
+                        return true;
+                    });
+                    setProjects(filteredData.length > 0 ? filteredData : initialProjects);
+                }
+            } catch (error) {
+                console.error('Error fetching projects:', error);
+                // Fallback to static data already set in state
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchProjects();
+    }, []);
 
     return (
         <section id="projects" className="py-24 bg-black relative border-y border-gray-800 overflow-hidden">
@@ -24,10 +61,15 @@ export default function Projects() {
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 uppercase tracking-tighter drop-shadow-lg">What We <span className="text-[rgb(var(--primary-color))]">Think</span></h2>
                     <p className="text-white opacity-95 max-w-5xl mx-auto text-lg md:text-xl leading-relaxed italic">"Philosophy meets Code. Our thoughts on AI, SaaS, and the future of digital transformation."</p>
+                    {isLoading && (
+                        <div className="flex items-center justify-center mt-8">
+                            <Loader2 className="w-8 h-8 text-[rgb(var(--primary-color))] animate-spin" />
+                        </div>
+                    )}
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-12">
-                    {projects.map((project, index) => (
+                    {displayedProjects.map((project, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, scale: 0.95 }}

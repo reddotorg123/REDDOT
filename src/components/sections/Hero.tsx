@@ -28,32 +28,32 @@ export default function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                 >
-                    <h1 className="text-5xl md:text-7xl xl:text-8xl font-extrabold text-[rgb(var(--secondary-color))] mb-8 tracking-tight leading-[1.1]">
+                    <h1 className="text-4xl md:text-7xl xl:text-8xl font-extrabold text-[rgb(var(--secondary-color))] mb-6 md:mb-8 tracking-tight leading-[1.1]">
                         Innovative <span className="text-[rgb(var(--primary-color))]">AI Solutions</span><br className="hidden md:block" /> for Modern Business
                     </h1>
 
-                    <p className="text-xl md:text-2xl xl:text-3xl text-white opacity-70 max-w-5xl mx-auto mb-12 font-light leading-relaxed">
+                    <p className="text-lg md:text-2xl xl:text-3xl text-white opacity-70 max-w-5xl mx-auto mb-10 md:mb-12 font-light leading-relaxed px-4 md:px-0">
                         Transforming operations with <span className="font-semibold text-white">Autonomous Agents</span>, <span className="font-semibold text-white">Multi-Agent Systems</span>, and <span className="font-semibold text-white">Custom LLMs</span>.
                     </p>
 
-                    <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-20 animate-fade-in-up delay-200">
+                    <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center mb-16 md:mb-20 animate-fade-in-up delay-200 w-full max-w-md sm:max-w-none mx-auto px-4 md:px-0">
                         <Link
                             href="#contact"
-                            className="px-8 py-4 rounded-lg bg-[rgb(var(--primary-color))] text-white font-bold hover:opacity-80 transition-all shadow-lg hover:shadow-[rgb(var(--primary-color))]/25 flex items-center gap-2"
+                            className="w-full sm:w-auto px-8 py-4 rounded-lg bg-[rgb(var(--primary-color))] text-white font-bold hover:opacity-80 transition-all shadow-lg hover:shadow-[rgb(var(--primary-color))]/25 flex items-center justify-center gap-2"
                         >
                             Get Started <ArrowRight className="w-5 h-5" />
                         </Link>
                         <Link
                             href="#projects"
-                            className="px-8 py-4 rounded-lg bg-black border border-gray-700 text-gray-300 font-bold hover:border-[rgb(var(--primary-color))] hover:text-[rgb(var(--primary-color))] transition-all shadow-sm hover:shadow-md flex items-center gap-2"
+                            className="w-full sm:w-auto px-8 py-4 rounded-lg bg-black border border-gray-700 text-gray-300 font-bold hover:border-[rgb(var(--primary-color))] hover:text-[rgb(var(--primary-color))] transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2"
                         >
-                            <Play className="w-5 h-5 fill-current" /> View Projects
+                            <Play className="w-5 h-5 fill-current" /> Projects
                         </Link>
                         <button
-                            className="px-8 py-4 rounded-lg bg-gray-800 text-white font-bold hover:bg-gray-700 transition-all shadow-lg hover:shadow-gray-900/25 flex items-center gap-2"
+                            className="w-full sm:w-auto px-8 py-4 rounded-lg bg-gray-800 text-white font-bold hover:bg-gray-700 transition-all shadow-lg hover:shadow-gray-900/25 flex items-center justify-center gap-2"
                             onClick={openChat}
                         >
-                            <MessageSquare className="w-5 h-5" /> Chat With AI
+                            <MessageSquare className="w-5 h-5" /> AI Chat
                         </button>
                     </div>
                 </motion.div>
@@ -63,7 +63,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.8 }}
-                    className="grid grid-cols-2 md:grid-cols-2 gap-12 max-w-2xl mx-auto pt-8 border-t border-gray-800"
+                    className="grid grid-cols-2 md:grid-cols-2 gap-12 max-w-2xl mx-auto pt-8 pb-24 lg:pb-0 border-t border-gray-800"
                 >
                     {[
                         { label: 'AI Projects Delivered', value: '15+' },

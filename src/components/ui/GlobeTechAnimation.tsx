@@ -4,10 +4,22 @@ import { useEffect, useRef } from "react";
 
 export default function GlobeTechAnimation() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const isVisible = useRef(true);
 
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
+
+        // Performance Optimization: Intersection Observer
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                isVisible.current = entry.isIntersecting;
+                console.log("GlobeTech Animation Visibility:", entry.isIntersecting);
+            },
+            { threshold: 0.1 }
+        );
+
+        observer.observe(canvas);
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
@@ -42,8 +54,15 @@ export default function GlobeTechAnimation() {
 
         function draw() {
             if (!canvas || !ctx) return;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
             
+            // Performance Optimization: Skip drawing if not visible
+            if (!isVisible.current) {
+                animationFrameId = requestAnimationFrame(draw);
+                return;
+            }
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
             const centerX = canvas.width / 2;
             const centerY = canvas.height / 2;
             const radius = Math.min(canvas.width, canvas.height) * 0.4;
@@ -70,12 +89,12 @@ export default function GlobeTechAnimation() {
             particles.forEach(p => {
                 p.y -= p.speed;
                 if (p.y < -50) p.y = canvas.height + 50;
-                
+
                 const hoverX = Math.sin(angle + p.phase) * 20;
                 ctx.font = `${p.r}px Arial`;
                 ctx.fillStyle = "rgba(168, 85, 247, 0.4)";
                 ctx.fillText(p.symbol, p.x + hoverX, p.y);
-                
+
                 // Connection to globe
                 ctx.beginPath();
                 ctx.moveTo(p.x + hoverX, p.y);
@@ -93,6 +112,7 @@ export default function GlobeTechAnimation() {
         return () => {
             window.removeEventListener("resize", resizeCanvas);
             cancelAnimationFrame(animationFrameId);
+            observer.disconnect();
         };
     }, []);
 
