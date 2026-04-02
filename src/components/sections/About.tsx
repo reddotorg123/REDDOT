@@ -44,7 +44,7 @@ const founders = [
         role: 'Founder & Embedded Systems Engineer',
         description: 'Expert in VLSI Design and hardware-software integration.',
         image: '/images/founder/jagadish_new_v2.jpg',
-        portfolio: 'https://golden-canvas-remix.vercel.app/'
+        portfolio: 'https://jd-arc.vercel.app/'
     }
 ];
 
