@@ -108,8 +108,8 @@ export default function Contact() {
       title: "Email",
       description: "Founders & Support",
       contact:
-        "jaikeerthi156@gmail.com\njagadish2k2006@gmail.com\nreddot123@gmail.com",
-      link: "mailto:reddot123@gmail.com",
+        "jaikeerthi156@gmail.com\njagadish2k2006@gmail.com\nreddot.org123@gmail.com",
+      link: "mailto:reddot.org123@gmail.com",
       color: "from-blue-600 to-blue-400",
     },
     {

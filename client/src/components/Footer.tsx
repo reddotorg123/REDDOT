@@ -173,7 +173,7 @@ const Footer = memo(function Footer() {
                     </a>
                   </div>
                   <div className="flex items-center gap-3 hover:text-foreground transition-colors pl-7">
-                    <a href="mailto:reddot123@gmail.com">reddot123@gmail.com</a>
+                    <a href="mailto:reddot.org123@gmail.com">reddot.org123@gmail.com</a>
                   </div>
                 </div>
                 <div className="flex flex-col gap-2 text-foreground-tertiary mt-3">
