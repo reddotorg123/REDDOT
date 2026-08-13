@@ -8,21 +8,21 @@
        ============================================================ -->
 
   <url>
-    <loc>https://reddot.ai/</loc>
+    <loc>https://reddot.org.in/</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://reddot.ai/contact</loc>
+    <loc>https://reddot.org.in/contact</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://reddot.ai/career</loc>
+    <loc>https://reddot.org.in/career</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -33,7 +33,7 @@
        ============================================================ -->
 
   <url>
-    <loc>https://reddot.ai/blog</loc>
+    <loc>https://reddot.org.in/blog</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -41,42 +41,42 @@
 
   <!-- Blog Articles -->
   <url>
-    <loc>https://reddot.ai/blog/future-of-enterprise-ai-agents</loc>
+    <loc>https://reddot.org.in/blog/future-of-enterprise-ai-agents</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://reddot.ai/blog/rag-systems-production-guide</loc>
+    <loc>https://reddot.org.in/blog/rag-systems-production-guide</loc>
     <lastmod>2026-06-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://reddot.ai/blog/llm-fine-tuning-enterprise</loc>
+    <loc>https://reddot.org.in/blog/llm-fine-tuning-enterprise</loc>
     <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://reddot.ai/blog/iot-embedded-ai-edge</loc>
+    <loc>https://reddot.org.in/blog/iot-embedded-ai-edge</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://reddot.ai/blog/cybersecurity-ai-threat-detection</loc>
+    <loc>https://reddot.org.in/blog/cybersecurity-ai-threat-detection</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://reddot.ai/blog/automation-workflows-productivity</loc>
+    <loc>https://reddot.org.in/blog/automation-workflows-productivity</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -84,42 +84,42 @@
 
   <!-- Blog Category Feeds -->
   <url>
-    <loc>https://reddot.ai/blog?category=AI</loc>
+    <loc>https://reddot.org.in/blog?category=AI</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://reddot.ai/blog?category=ML</loc>
+    <loc>https://reddot.org.in/blog?category=ML</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://reddot.ai/blog?category=Research</loc>
+    <loc>https://reddot.org.in/blog?category=Research</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://reddot.ai/blog?category=IoT</loc>
+    <loc>https://reddot.org.in/blog?category=IoT</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://reddot.ai/blog?category=Cybersecurity</loc>
+    <loc>https://reddot.org.in/blog?category=Cybersecurity</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://reddot.ai/blog?category=Automation</loc>
+    <loc>https://reddot.org.in/blog?category=Automation</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -130,21 +130,21 @@
        ============================================================ -->
 
   <url>
-    <loc>https://reddot.ai/privacy</loc>
+    <loc>https://reddot.org.in/privacy</loc>
     <lastmod>2026-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
 
   <url>
-    <loc>https://reddot.ai/terms</loc>
+    <loc>https://reddot.org.in/terms</loc>
     <lastmod>2026-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
 
   <url>
-    <loc>https://reddot.ai/cookies</loc>
+    <loc>https://reddot.org.in/cookies</loc>
     <lastmod>2026-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

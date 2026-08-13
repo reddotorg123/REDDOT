@@ -35,6 +35,6 @@ User-agent: SemrushBot
 Disallow: /
 
 # Sitemaps
-Sitemap: https://reddot.ai/sitemap.xml
-Sitemap: https://reddot.ai/sitemap-blog.xml
-Sitemap: https://reddot.ai/sitemap-services.xml
+Sitemap: https://reddot.org.in/sitemap.xml
+Sitemap: https://reddot.org.in/sitemap-blog.xml
+Sitemap: https://reddot.org.in/sitemap-services.xml
