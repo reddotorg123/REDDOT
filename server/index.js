@@ -12,11 +12,6 @@ const port = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-// Keep-awake endpoint
-app.get('/ping', (req, res) => {
-  res.status(200).send('pong');
-});
-
 // Initialize Gemini API
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
@@ -28,11 +23,12 @@ app.post('/api/chat', async (req, res) => {
       return res.status(500).json({ error: 'Gemini API key is not configured on the server.' });
     }
 
-    const model = genAI.getGenerativeModel({ 
+    const model = genAI.getGenerativeModel({
       model: "gemini-2.5-flash",
       systemInstruction: {
         role: "system",
-        parts: [{ text: `You are Reddot AI's helpful 3D Avatar Support Agent. 
+        parts: [{
+          text: `You are Reddot AI's helpful 3D Avatar Support Agent. 
 You are speaking directly to a user through a voice interface, so keep your responses short, natural, and conversational (like a real person speaking). 
 Do NOT use markdown, bullet points, asterisks, or complex formatting since your text will be read aloud by a Text-to-Speech engine. 
 Keep your answers brief (1-3 sentences maximum) unless the user asks for a detailed explanation. 
@@ -63,15 +59,4 @@ You assist users with navigating the Reddot AI website, understanding AI solutio
 
 app.listen(port, () => {
   console.log(`Support Agent backend running on http://localhost:${port}`);
-  
-  // Prevent Render from sleeping by pinging the service every 14 minutes
-  const externalUrl = process.env.RENDER_EXTERNAL_URL || 'https://reddot-ai.onrender.com';
-  console.log(`Setting up keep-alive ping for ${externalUrl} ...`);
-  setInterval(() => {
-    https.get(`${externalUrl}/ping`, (resp) => {
-      console.log(`Keep-alive ping sent to ${externalUrl} - Status: ${resp.statusCode}`);
-    }).on("error", (err) => {
-      console.error(`Keep-alive ping failed: ${err.message}`);
-    });
-  }, 14 * 60 * 1000); // 14 minutes
 });
