@@ -135,17 +135,11 @@ const TechStack = memo(function TechStack() {
     <section className="py-32 bg-gradient-to-b from-background-secondary to-background relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 -z-10">
-        <motion.div
+        <div
           className="absolute top-1/3 right-0 w-80 h-80 bg-blue-100 rounded-full blur-3xl opacity-30"
-          animate={{ x: [0, -60, 0], y: [0, -40, 0] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          style={{ willChange: "transform, opacity" }}
         />
-        <motion.div
+        <div
           className="absolute bottom-1/3 left-0 w-80 h-80 bg-purple-100 rounded-full blur-3xl opacity-30"
-          animate={{ x: [0, 60, 0], y: [0, 40, 0] }}
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-          style={{ willChange: "transform, opacity" }}
         />
       </div>
 

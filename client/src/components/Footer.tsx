@@ -307,18 +307,8 @@ const Footer = memo(function Footer() {
 
       {/* Animated Background */}
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-        <motion.div
+        <div
           className="absolute top-1/2 left-1/4 w-96 h-96 bg-gradient-primary opacity-3 rounded-full blur-3xl"
-          animate={{
-            x: [0, 50, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          style={{ willChange: "transform, opacity" }}
         />
       </div>
     </footer>

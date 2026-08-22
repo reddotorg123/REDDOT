@@ -156,25 +156,11 @@ export default function About() {
     >
       {/* Background */}
       <div className="absolute inset-0 -z-10">
-        <motion.div
+        <div
           className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-25"
-          animate={{ x: [0, 80, 0], y: [0, -80, 0] }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut" as any,
-          }}
-          style={{ willChange: "transform, opacity" }}
         />
-        <motion.div
+        <div
           className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-25"
-          animate={{ x: [0, -80, 0], y: [0, 80, 0] }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut" as any,
-          }}
-          style={{ willChange: "transform, opacity" }}
         />
       </div>
 

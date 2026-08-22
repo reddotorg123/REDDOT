@@ -68,31 +68,11 @@ export default function Team() {
     <section className="py-32 bg-background-secondary relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 -z-10">
-        <motion.div
-          className="absolute top-1/2 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30 animate-pulse"
-          style={{ willChange: "transform, opacity" }}
-          animate={{
-            x: [0, 50, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut" as any,
-          }}
+        <div
+          className="absolute top-1/2 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30"
         />
-        <motion.div
-          className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-100 rounded-full blur-3xl opacity-20 animate-pulse"
-          style={{ willChange: "transform, opacity" }}
-          animate={{
-            x: [0, -50, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut" as any,
-          }}
+        <div
+          className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-100 rounded-full blur-3xl opacity-20"
         />
       </div>
 
