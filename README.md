@@ -307,3 +307,20 @@ For internal team members, please follow the development guidelines in `todo.md`
 **Last Updated**: June 30, 2026  
 **Version**: 2.0 (Phase 2 Complete)  
 **Status**: Production Ready
+
+
+## 🚀 AWS Deployment Guide (GitHub Actions)
+
+This project features an automated CD pipeline configured via GitHub Actions in `.github/workflows/deploy.yml`.
+
+### Setting up Repository Secrets
+To connect the pipeline to your AWS EC2/Lightsail host, go to **Settings** ➔ **Secrets and variables** ➔ **Actions** in your GitHub repository and add the following three secrets:
+
+* **Name**: `SERVER_HOST`
+  * **Secret**: Your AWS EC2 Public IP address (e.g. `15.206.211.195`).
+* **Name**: `SERVER_USER`
+  * **Secret**: Your AWS EC2 username (e.g. `ubuntu`).
+* **Name**: `SSH_PRIVATE_KEY`
+  * **Secret**: The exact text content inside your AWS `.pem` key file (copy the entire thing from `-----BEGIN RSA PRIVATE KEY-----` to `-----END RSA PRIVATE KEY-----`).
+
+Once these secrets are saved, any push to the `main` branch will automatically trigger the deployment pipeline.
