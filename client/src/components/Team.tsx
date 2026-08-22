@@ -24,6 +24,15 @@ export default function Team() {
 
   const team: TeamMember[] = [
     {
+      name: "Jagadish",
+      role: "Co-Founder & System Architect",
+      bio: "Architect specialized in Web Development, Cybersecurity, Embedded Systems & IoT, and VLSI Design.",
+      expertise: ["Web Dev", "Cybersecurity", "Embedded/IoT", "VLSI Design"],
+      image: "/images/jagadish.jpg",
+      portfolio: "https://jd-arc.vercel.app/",
+      linkedin: "https://www.linkedin.com/in/jagadish-k-583996351",
+    },
+    {
       name: "Jaikeerthi",
       role: "Founder & AI Specialist",
       bio: "Expert in building AI/ML solutions, specialized in Generative AI, Agentic AI, and Data Science systems.",
@@ -32,15 +41,6 @@ export default function Team() {
       portfolio: "https://jai-portfolio07.vercel.app/",
       linkedin: "https://www.linkedin.com/in/jaikeerthi-r-03931b341",
       instagram: "#",
-    },
-    {
-      name: "Jagadish",
-      role: "Co-Founder & System Architect",
-      bio: "Architect specialized in Web Development, Cybersecurity, Embedded Systems & IoT, and VLSI Design.",
-      expertise: ["Web Dev", "Cybersecurity", "Embedded/IoT", "VLSI Design"],
-      image: "/images/jagadish.jpg",
-      portfolio: "https://jd-arc.vercel.app/",
-      linkedin: "https://www.linkedin.com/in/jagadish-k-583996351",
     },
   ];
 
