@@ -23,7 +23,7 @@ jobs:
             
             # Clone if it doesn't exist
             if [ ! -d "$HOME/app" ]; then
-              git clone https://github.com/jaikeerthi07/REDDOT.AI.git $HOME/app
+              git clone https://github.com/reddotorg123/REDDOT.git $HOME/app
             fi
             
             # Ensure permissions are correct
