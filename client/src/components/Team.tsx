@@ -24,8 +24,8 @@ export default function Team() {
 
   const team: TeamMember[] = [
     {
-      name: "Jagadish",
-      role: "Co-Founder & System Architect",
+      name: "JAGADISH",
+      role: "Founder & System Architect",
       bio: "Architect specialized in Web Development, Cybersecurity, Embedded Systems & IoT, and VLSI Design.",
       expertise: ["Web Dev", "Cybersecurity", "Embedded/IoT", "VLSI Design"],
       image: "/images/jagadish.jpg",
