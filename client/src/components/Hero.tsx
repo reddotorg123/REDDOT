@@ -194,11 +194,9 @@ const Hero = memo(function Hero() {
           >
             <Button
               className="w-full sm:w-auto px-9 py-7 text-lg bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 text-white font-extrabold rounded-xl shadow-xl shadow-blue-500/25 hover:shadow-cyan-500/40 transition-all duration-300 flex items-center justify-center gap-3 border border-blue-400/40 cursor-pointer tracking-wide"
-              onClick={() =>
-                document
-                  .getElementById("projects-section")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
+              onClick={() => {
+                window.location.href = "/contact";
+              }}
             >
               <span className="relative z-10">Start Your Project</span>
               <ArrowRight size={22} className="relative z-10 animate-pulse" />
@@ -213,11 +211,14 @@ const Hero = memo(function Hero() {
             <Button
               variant="outline"
               className="w-full sm:w-auto px-9 py-7 text-lg border-2 border-blue-600/40 text-blue-600 dark:text-cyan-400 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md hover:bg-blue-50 dark:hover:bg-slate-800 font-bold rounded-xl shadow-md transition-all cursor-pointer"
-              onClick={() =>
-                document
-                  .getElementById("services-section")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
+              onClick={() => {
+                const el = document.getElementById("services");
+                if (el) {
+                  el.scrollIntoView({ behavior: "smooth" });
+                } else {
+                  window.location.href = "/#services";
+                }
+              }}
             >
               Explore Services
             </Button>

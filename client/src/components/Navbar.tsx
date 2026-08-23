@@ -93,7 +93,20 @@ export default function Navbar() {
             <motion.a
               key={item.label}
               href={item.href}
-              className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors relative group"
+              onClick={(e) => {
+                if (item.href.startsWith("/#")) {
+                  const id = item.href.replace("/#", "");
+                  if (window.location.pathname === "/") {
+                    e.preventDefault();
+                    const el = document.getElementById(id);
+                    if (el) {
+                      el.scrollIntoView({ behavior: "smooth" });
+                      window.history.pushState(null, "", `/#${id}`);
+                    }
+                  }
+                }
+              }}
+              className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors relative group cursor-pointer"
               whileHover={{ y: -2 }}
             >
               {item.label}
@@ -235,8 +248,21 @@ export default function Navbar() {
             <motion.a
               key={item.label}
               href={item.href}
-              className="text-slate-500 hover:text-slate-900 transition-colors py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors py-2"
+              onClick={(e) => {
+                setIsMobileMenuOpen(false);
+                if (item.href.startsWith("/#")) {
+                  const id = item.href.replace("/#", "");
+                  if (window.location.pathname === "/") {
+                    e.preventDefault();
+                    const el = document.getElementById(id);
+                    if (el) {
+                      el.scrollIntoView({ behavior: "smooth" });
+                      window.history.pushState(null, "", `/#${id}`);
+                    }
+                  }
+                }
+              }}
               whileHover={{ x: 4 }}
             >
               {item.label}

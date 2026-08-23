@@ -61,6 +61,18 @@ function DeferredSection({
  * Home page showcasing REDDOT's services, solutions, and innovations
  */
 export default function Home() {
+  useEffect(() => {
+    if (window.location.hash) {
+      const targetId = window.location.hash.replace("#", "");
+      setTimeout(() => {
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300);
+    }
+  }, []);
+
   return (
     <div className="w-full">
       {/* Hero Section */}
@@ -69,25 +81,25 @@ export default function Home() {
       {/* Trusted Companies */}
       <TrustedCompanies />
 
-      <DeferredSection id="services-section" minHeight={760}>
+      <DeferredSection id="services" minHeight={760}>
         <Services />
       </DeferredSection>
-      <DeferredSection minHeight={760}>
+      <DeferredSection id="timeline" minHeight={760}>
         <AITimeline />
       </DeferredSection>
       <DeferredSection minHeight={420}>
         <Statistics />
       </DeferredSection>
-      <DeferredSection minHeight={680}>
+      <DeferredSection id="industries" minHeight={680}>
         <Industries />
       </DeferredSection>
-      <DeferredSection id="projects-section" minHeight={700}>
+      <DeferredSection id="projects" minHeight={700}>
         <CaseStudies />
       </DeferredSection>
-      <DeferredSection minHeight={760}>
+      <DeferredSection id="about" minHeight={760}>
         <About />
       </DeferredSection>
-      <DeferredSection minHeight={600}>
+      <DeferredSection id="team" minHeight={600}>
         <Team />
       </DeferredSection>
       <DeferredSection minHeight={640}>
