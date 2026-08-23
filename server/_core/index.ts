@@ -33,6 +33,7 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 
 async function startServer() {
   const app = express();
+  const server = createServer(app);
   // Security & SEO Headers Middleware
   app.use((req, res, next) => {
     res.setHeader("X-Content-Type-Options", "nosniff");
