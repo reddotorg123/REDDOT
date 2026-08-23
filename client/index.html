@@ -238,25 +238,23 @@
       }
     };
 
-    // Keep header & body flush at top without Google translate banner pushing it down
-    setInterval(function() {
-      if (document.body && document.body.style.top && document.body.style.top !== '0px') {
-        document.body.style.top = '0px';
-        document.body.style.position = 'static';
-        document.body.style.marginTop = '0px';
-      }
-      var frames = document.querySelectorAll('.goog-te-banner-frame, iframe[class*="goog-te-banner"], .VIpgJd-ZVi9od-ORHb-Oxf5td, .skiptranslate');
-      for (var i = 0; i < frames.length; i++) {
-        var el = frames[i];
-        if (el.tagName === 'IFRAME') {
-          el.style.display = 'none';
-          el.style.visibility = 'hidden';
-          el.style.height = '0px';
-        }
-      }
-    }, 100);
+    function loadGoogleTranslateScript() {
+      if (document.getElementById('google-translate-script')) return;
+      var s = document.createElement('script');
+      s.id = 'google-translate-script';
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      document.body.appendChild(s);
+    }
+
+    window.loadGoogleTranslateScript = loadGoogleTranslateScript;
+
+    // Preload only if non-English translation cookie is active
+    if (document.cookie.indexOf('googtrans=/en/') !== -1 && document.cookie.indexOf('googtrans=/en/en') === -1) {
+      loadGoogleTranslateScript();
+    }
   </script>
-  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 

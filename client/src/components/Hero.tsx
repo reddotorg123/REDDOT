@@ -122,26 +122,6 @@ const Hero = memo(function Hero() {
     };
   }, []);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8 },
-    },
-  };
-
   return (
     <section className="relative w-full min-h-[100svh] flex items-center justify-center overflow-hidden pt-32 pb-24 md:pt-20 md:pb-16 bg-slate-50 dark:bg-[#070b14] transition-colors duration-300">
       {/* Animated Background Canvas */}
@@ -153,40 +133,23 @@ const Hero = memo(function Hero() {
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background-secondary/30 pointer-events-none" />
 
-      {/* Content */}
-      <motion.div
-        className="relative z-10 container max-w-4xl mx-auto px-4 text-center mt-8 md:mt-0"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        style={{ willChange: "opacity" }}
-      >
+      {/* Content — Instant LCP without initial CSS opacity hiding */}
+      <div className="relative z-10 container max-w-4xl mx-auto px-4 text-center mt-8 md:mt-0">
         {/* Main Headline */}
-        <motion.h1
-          className="text-5xl sm:text-6xl md:text-7xl font-bold text-slate-900 dark:text-white mb-6 leading-tight"
-          variants={itemVariants as any}
-          style={{ willChange: "transform, opacity" }}
-        >
+        <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
           Architecting <span className="text-gradient">Intelligence</span> for
           the Modern Enterprise
-        </motion.h1>
+        </h1>
 
         {/* Subheadline */}
-        <motion.p
-          className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto font-normal"
-          variants={itemVariants as any}
-          style={{ willChange: "transform, opacity" }}
-        >
+        <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto font-normal">
           Deploying mission-critical AI systems, intelligent automation, and
           scalable software architectures to accelerate digital transformation
           for global industry leaders.
-        </motion.p>
+        </p>
 
         {/* CTA Buttons */}
-        <motion.div
-          className="flex flex-col sm:flex-row gap-5 justify-center items-center relative z-20"
-          variants={itemVariants as any}
-        >
+        <div className="flex flex-col sm:flex-row gap-5 justify-center items-center relative z-20">
           <motion.div
             whileHover={{ scale: 1.06, y: -2 }}
             whileTap={{ scale: 0.96 }}
@@ -223,8 +186,8 @@ const Hero = memo(function Hero() {
               Explore Services
             </Button>
           </motion.div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 });

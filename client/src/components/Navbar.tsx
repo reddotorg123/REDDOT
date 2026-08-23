@@ -137,7 +137,17 @@ export default function Navbar() {
           {/* Language Selector */}
           <div className="relative lang-dropdown-container">
             <motion.button
-              onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+              onClick={() => {
+                setIsLangMenuOpen(!isLangMenuOpen);
+                if (typeof (window as any).loadGoogleTranslateScript === "function") {
+                  (window as any).loadGoogleTranslateScript();
+                }
+              }}
+              onMouseEnter={() => {
+                if (typeof (window as any).loadGoogleTranslateScript === "function") {
+                  (window as any).loadGoogleTranslateScript();
+                }
+              }}
               className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors cursor-pointer text-slate-600 dark:text-slate-300 flex items-center gap-1"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
