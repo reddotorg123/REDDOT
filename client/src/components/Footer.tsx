@@ -1,6 +1,6 @@
 import { memo, useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, Linkedin, Twitter, Github, CheckCircle2, Loader2 } from "lucide-react";
+import { Mail, MapPin, Phone, Linkedin, Twitter, Github, Instagram, Youtube, Facebook, CheckCircle2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
@@ -61,9 +61,9 @@ const Footer = memo(function Footer() {
     {
       title: "Resources",
       links: [
-        { label: "Documentation", href: "#" },
-        { label: "API Reference", href: "#" },
-        { label: "Blog", href: "/blog" },
+        { label: "Documentation", href: "/products" },
+        { label: "Services Overview", href: "/#services" },
+        { label: "Blog & Research", href: "/blog" },
         { label: "Case Studies", href: "/#case-studies" },
       ],
     },
@@ -72,25 +72,28 @@ const Footer = memo(function Footer() {
       links: [
         { label: "About Us", href: "/#about" },
         { label: "Careers", href: "/career" },
-        { label: "Press", href: "#" },
-        { label: "Contact", href: "/contact" },
+        { label: "Internships", href: "/internship" },
+        { label: "Contact Us", href: "/contact" },
       ],
     },
     {
       title: "Legal",
       links: [
-        { label: "Privacy Policy", href: "/privacy" },
-        { label: "Terms of Service", href: "/terms" },
-        { label: "Cookie Policy", href: "/cookies" },
-        { label: "Security", href: "/security" },
+        { label: "Privacy Policy", href: "/legal#privacy" },
+        { label: "Terms of Service", href: "/legal#terms" },
+        { label: "Cookie Policy", href: "/legal#cookies" },
+        { label: "Security", href: "/legal#security" },
       ],
     },
   ];
 
   const socialLinks = [
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Github, href: "#", label: "GitHub" },
+    { icon: Linkedin, href: "https://linkedin.com/company/reddot.org.in", label: "LinkedIn" },
+    { icon: Twitter, href: "https://twitter.com/reddot.org.in", label: "Twitter / X" },
+    { icon: Github, href: "https://github.com/reddotorg123", label: "GitHub" },
+    { icon: Instagram, href: "https://instagram.com/reddot.org.in", label: "Instagram" },
+    { icon: Youtube, href: "https://youtube.com/@reddot-ai", label: "YouTube" },
+    { icon: Facebook, href: "https://facebook.com/reddot.org.in", label: "Facebook" },
   ];
 
   const containerVariants = {
@@ -252,7 +255,7 @@ const Footer = memo(function Footer() {
               {/* Quick Stats */}
               <div className="grid grid-cols-3 gap-4">
                 {[
-                  { number: "2026", label: "Est. Year" },
+                  { number: "2024", label: "Est. Year" },
                   { number: "12+", label: "Sectors Served" },
                   { number: "100%", label: "Commitment" },
                 ].map(stat => (
@@ -285,7 +288,7 @@ const Footer = memo(function Footer() {
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="text-slate-500 hover:text-slate-900 transition-colors text-sm"
+                        className="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors text-sm"
                       >
                         {link.label}
                       </a>
@@ -310,20 +313,20 @@ const Footer = memo(function Footer() {
 
             <div className="flex items-center gap-6">
               <a
-                href="#"
-                className="text-slate-500 hover:text-slate-900 transition-colors text-sm"
+                href="/legal#privacy"
+                className="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors text-sm"
               >
                 Privacy Policy
               </a>
               <a
-                href="#"
-                className="text-slate-500 hover:text-slate-900 transition-colors text-sm"
+                href="/legal#terms"
+                className="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors text-sm"
               >
                 Terms of Service
               </a>
               <a
-                href="#"
-                className="text-slate-500 hover:text-slate-900 transition-colors text-sm"
+                href="/legal#cookies"
+                className="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors text-sm"
               >
                 Cookie Settings
               </a>
