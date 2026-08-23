@@ -68,8 +68,8 @@ export default function About() {
         "Pushing boundaries with cutting-edge AI and technology solutions that redefine what is possible for modern businesses.",
       icon: Rocket,
       color: "from-blue-600 to-cyan-500",
-      bg: "from-blue-50 to-cyan-50",
-      border: "border-blue-200 hover:border-blue-500",
+      bg: "from-blue-500/10 to-cyan-500/10",
+      border: "border-blue-200 dark:border-blue-900/60 hover:border-blue-500",
     },
     {
       title: "Excellence",
@@ -77,8 +77,8 @@ export default function About() {
         "Delivering world-class quality in every project and interaction, backed by rigorous engineering standards.",
       icon: Star,
       color: "from-amber-500 to-orange-500",
-      bg: "from-amber-50 to-orange-50",
-      border: "border-amber-200 hover:border-amber-500",
+      bg: "from-amber-500/10 to-orange-500/10",
+      border: "border-amber-200 dark:border-amber-900/60 hover:border-amber-500",
     },
     {
       title: "Trust & Integrity",
@@ -86,8 +86,8 @@ export default function About() {
         "Building long-term partnerships based on reliability, transparency, and unwavering commitment to our clients.",
       icon: Shield,
       color: "from-emerald-600 to-green-500",
-      bg: "from-emerald-50 to-green-50",
-      border: "border-emerald-200 hover:border-emerald-500",
+      bg: "from-emerald-500/10 to-green-500/10",
+      border: "border-emerald-200 dark:border-emerald-900/60 hover:border-emerald-500",
     },
     {
       title: "Real Impact",
@@ -95,8 +95,8 @@ export default function About() {
         "Creating measurable change through intelligent technology that delivers ROI and drives business transformation.",
       icon: TrendingUp,
       color: "from-purple-600 to-violet-500",
-      bg: "from-purple-50 to-violet-50",
-      border: "border-purple-200 hover:border-purple-500",
+      bg: "from-purple-500/10 to-violet-500/10",
+      border: "border-purple-200 dark:border-purple-900/60 hover:border-purple-500",
     },
   ];
 
@@ -208,7 +208,7 @@ export default function About() {
                   {idx < timeline.length - 1 && (
                     <div className="hidden lg:block absolute top-16 -right-3 w-6 h-0.5 bg-gradient-to-r from-slate-300 to-transparent z-10" />
                   )}
-                  <div className="relative p-8 rounded-2xl border border-slate-200 bg-white hover:border-blue-400 transition-all duration-300 h-full shadow-sm hover:shadow-xl hover:shadow-blue-100">
+                  <div className="relative p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-400 transition-all duration-300 h-full shadow-sm hover:shadow-xl hover:shadow-blue-500/10">
                     <div
                       className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-2xl`}
                     />
@@ -219,13 +219,13 @@ export default function About() {
                     >
                       <Icon className="w-7 h-7 text-white" />
                     </motion.div>
-                    <p className="text-sm font-bold text-blue-600 mb-2 tracking-wide">
+                    <p className="text-sm font-bold text-blue-600 dark:text-blue-400 mb-2 tracking-wide">
                       {item.year}
                     </p>
                     <h3 className="text-xl font-bold text-foreground mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-slate-600 text-sm leading-relaxed">
+                    <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -244,13 +244,13 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <p className="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-3">
+            <p className="text-blue-600 dark:text-blue-400 text-sm font-semibold uppercase tracking-widest mb-3">
               What Drives Us
             </p>
             <h3 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               Our Core Values
             </h3>
-            <p className="text-lg text-slate-600 max-w-xl mx-auto">
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-xl mx-auto">
               The principles that guide every decision, every line of code, and
               every client interaction.
             </p>
@@ -268,7 +268,7 @@ export default function About() {
               return (
                 <motion.div
                   key={idx}
-                  className={`group relative p-8 rounded-2xl border ${value.border} bg-white transition-all duration-300 overflow-hidden shadow-sm`}
+                  className={`group relative p-8 rounded-2xl border ${value.border} bg-white dark:bg-slate-900 transition-all duration-300 overflow-hidden shadow-sm`}
                   variants={itemVariants}
                   whileHover={{
                     y: -6,

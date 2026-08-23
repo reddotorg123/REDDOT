@@ -65,9 +65,10 @@ const Hero = memo(function Hero() {
       if (timestamp - lastTime < INTERVAL) return;
       lastTime = timestamp;
 
-      // Clear canvas with slight fade
-      ctx.fillStyle = "rgba(250, 251, 252, 0.15)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      const isDark = document.documentElement.classList.contains("dark");
+
+      // Clear canvas cleanly without accumulating solid paint
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Update and draw particles
       particles.forEach(particle => {
@@ -81,13 +82,15 @@ const Hero = memo(function Hero() {
         if (particle.y > canvas.height) particle.y = 0;
 
         // Draw particle
-        ctx.fillStyle = `rgba(37, 99, 235, ${particle.opacity})`;
+        ctx.fillStyle = isDark
+          ? `rgba(96, 165, 250, ${Math.min(particle.opacity * 1.6, 0.9)})`
+          : `rgba(37, 99, 235, ${particle.opacity})`;
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
         ctx.fill();
       });
 
-      // Draw connections (only check close neighbors for performance)
+      // Draw connections
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
@@ -96,8 +99,10 @@ const Hero = memo(function Hero() {
 
           if (distSq < 150 * 150) {
             const distance = Math.sqrt(distSq);
-            const opacity = (1 - distance / 150) * 0.25;
-            ctx.strokeStyle = `rgba(37, 99, 235, ${opacity})`;
+            const opacity = (1 - distance / 150) * (isDark ? 0.35 : 0.25);
+            ctx.strokeStyle = isDark
+              ? `rgba(147, 197, 253, ${opacity})`
+              : `rgba(37, 99, 235, ${opacity})`;
             ctx.lineWidth = 0.8;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
@@ -138,19 +143,19 @@ const Hero = memo(function Hero() {
   };
 
   return (
-    <section className="relative w-full min-h-[100svh] flex items-center justify-center overflow-hidden pt-32 pb-20 md:pt-20 md:pb-0">
-      {/* Animated Background */}
+    <section className="relative w-full min-h-[100svh] flex items-center justify-center overflow-hidden pt-32 pb-24 md:pt-20 md:pb-16 bg-slate-50 dark:bg-[#070b14] transition-colors duration-300">
+      {/* Animated Background Canvas */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-[#070b14]"
+        className="absolute inset-0 w-full h-full pointer-events-none"
       />
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background-secondary/50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background-secondary/30 pointer-events-none" />
 
       {/* Content */}
       <motion.div
-        className="relative z-10 container max-w-4xl mx-auto px-4 text-center mt-12 md:mt-0"
+        className="relative z-10 container max-w-4xl mx-auto px-4 text-center mt-8 md:mt-0"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -158,7 +163,7 @@ const Hero = memo(function Hero() {
       >
         {/* Main Headline */}
         <motion.h1
-          className="text-5xl sm:text-6xl md:text-7xl font-bold text-foreground mb-6 leading-tight"
+          className="text-5xl sm:text-6xl md:text-7xl font-bold text-slate-900 dark:text-white mb-6 leading-tight"
           variants={itemVariants as any}
           style={{ willChange: "transform, opacity" }}
         >
@@ -168,7 +173,7 @@ const Hero = memo(function Hero() {
 
         {/* Subheadline */}
         <motion.p
-          className="text-xl md:text-2xl text-foreground-tertiary mb-8 leading-relaxed max-w-3xl mx-auto"
+          className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto font-normal"
           variants={itemVariants as any}
           style={{ willChange: "transform, opacity" }}
         >
@@ -177,7 +182,7 @@ const Hero = memo(function Hero() {
           for global industry leaders.
         </motion.p>
 
-        {/* CTA Buttons — Always Visible with High Contrast */}
+        {/* CTA Buttons */}
         <motion.div
           className="flex flex-col sm:flex-row gap-5 justify-center items-center relative z-20"
           variants={itemVariants as any}
@@ -207,7 +212,7 @@ const Hero = memo(function Hero() {
           >
             <Button
               variant="outline"
-              className="w-full sm:w-auto px-9 py-7 text-lg border-2 border-blue-600/40 text-blue-600 dark:text-cyan-400 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md hover:bg-blue-50 dark:hover:bg-slate-800 font-bold rounded-xl shadow-md transition-all cursor-pointer"
+              className="w-full sm:w-auto px-9 py-7 text-lg border-2 border-blue-600/40 text-blue-600 dark:text-cyan-400 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md hover:bg-blue-50 dark:hover:bg-slate-800 font-bold rounded-xl shadow-md transition-all cursor-pointer"
               onClick={() =>
                 document
                   .getElementById("services-section")
@@ -218,21 +223,21 @@ const Hero = memo(function Hero() {
             </Button>
           </motion.div>
         </motion.div>
+      </motion.div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <div className="w-6 h-10 border-2 border-foreground-quaternary rounded-full flex items-center justify-center">
-            <motion.div
-              className="w-1 h-2 bg-foreground-quaternary rounded-full"
-              animate={{ y: [0, 4, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-          </div>
-        </motion.div>
+      {/* Scroll Indicator — Positioned safely at the bottom of the section */}
+      <motion.div
+        className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 z-10"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+      >
+        <div className="w-6 h-10 border-2 border-slate-400/50 dark:border-slate-600 rounded-full flex items-start justify-center p-1.5">
+          <motion.div
+            className="w-1.5 h-2.5 bg-blue-600 dark:bg-cyan-400 rounded-full"
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+        </div>
       </motion.div>
     </section>
   );

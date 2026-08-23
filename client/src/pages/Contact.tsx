@@ -283,48 +283,37 @@ export default function Contact() {
                 <motion.a
                   key={idx}
                   href={method.link}
-                  className="group relative h-64 rounded-2xl overflow-hidden cursor-pointer"
+                  target={method.link.startsWith("http") ? "_blank" : undefined}
+                  rel={method.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="group relative h-64 rounded-3xl overflow-hidden cursor-pointer border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 flex flex-col justify-between shadow-md hover:shadow-2xl transition-all duration-300"
                   variants={itemVariants}
-                  whileHover={{ scale: 1.05, rotateY: 5 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ y: -6, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  {/* Background Gradient */}
+                  {/* Hover Gradient Overlay */}
                   <div
-                    className={`absolute inset-0 bg-gradient-to-br ${method.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                    className={`absolute inset-0 bg-gradient-to-br ${method.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0`}
                   />
 
-                  {/* Card Content */}
-                  <div className="relative h-full p-8 border border-slate-200 rounded-2xl bg-white group-hover:border-transparent transition-all duration-500 flex flex-col justify-between">
-                    {/* Icon */}
-                    <motion.div
-                      className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center group-hover:scale-110 transition-transform"
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      <Icon className="w-7 h-7 text-blue-600" />
-                    </motion.div>
-
-                    {/* Text */}
-                    <div>
-                      <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-white transition-colors">
-                        {method.title}
-                      </h3>
-                      <p className="text-sm text-slate-600 group-hover:text-white/80 transition-colors mb-3">
-                        {method.description}
-                      </p>
-                      <p className="text-sm font-semibold text-blue-600 group-hover:text-white transition-colors whitespace-pre-line">
-                        {method.contact}
-                      </p>
+                  {/* Icon & Arrow Header */}
+                  <div className="relative z-10 flex items-center justify-between">
+                    <div className="w-13 h-13 rounded-2xl bg-blue-50 dark:bg-slate-800 group-hover:bg-white/20 flex items-center justify-center transition-colors shadow-sm">
+                      <Icon className="w-6 h-6 text-blue-600 dark:text-blue-400 group-hover:text-white transition-colors" />
                     </div>
+                    <Send className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300" />
+                  </div>
 
-                    {/* Hover Arrow */}
-                    <motion.div
-                      className="opacity-0 group-hover:opacity-100 transition-opacity"
-                      initial={{ x: -10 }}
-                      whileHover={{ x: 0 }}
-                    >
-                      <Send className="w-5 h-5 text-white" />
-                    </motion.div>
+                  {/* Text Content */}
+                  <div className="relative z-10">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-white transition-colors mb-1">
+                      {method.title}
+                    </h3>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 group-hover:text-white/80 transition-colors mb-2 font-medium">
+                      {method.description}
+                    </p>
+                    <p className="text-sm font-extrabold text-blue-600 dark:text-blue-400 group-hover:text-white transition-colors whitespace-pre-line">
+                      {method.contact}
+                    </p>
                   </div>
                 </motion.a>
               );
