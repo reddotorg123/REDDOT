@@ -1,38 +1,34 @@
-# REDDOT Innovative Solutions - robots.txt
-# Generated for search engine optimization
+# =============================================================================
+# REDDOT.AI — Production robots.txt (Optimized for Search Engine Crawlers)
+# =============================================================================
 
 User-agent: *
 Allow: /
-Disallow: /admin/
 Disallow: /api/
+Disallow: /admin/
 Disallow: /private/
-Disallow: /*.json$
-Disallow: /*.xml$
-Disallow: /*?*sort=
-Disallow: /*?*filter=
 
-# Crawl delay
-Crawl-delay: 1
-
-# Specific rules for Google
+# Specific major crawler directives
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 0
 
-# Specific rules for Bing
+User-agent: Googlebot-Image
+Allow: /images/
+
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 1
 
-# Block bad bots
-User-agent: MJ12bot
-Disallow: /
+User-agent: Applebot
+Allow: /
 
-User-agent: AhrefsBot
-Disallow: /
+User-agent: Twitterbot
+Allow: /
 
-User-agent: SemrushBot
-Disallow: /
+User-agent: facebookexternalhit
+Allow: /
 
-# Sitemaps
+User-agent: LinkedInBot
+Allow: /
+
+# XML Sitemap Index
 Sitemap: https://reddot.org.in/sitemap.xml
