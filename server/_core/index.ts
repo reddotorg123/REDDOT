@@ -33,19 +33,7 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 
 async function startServer() {
   const app = express();
-  // Security & SEO Headers Middleware
-  app.use((req, res, next) => {
-    res.setHeader("X-Content-Type-Options", "nosniff");
-    res.setHeader("X-Frame-Options", "SAMEORIGIN");
-    res.setHeader("X-XSS-Protection", "1; mode=block");
-    res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
-    res.setHeader("Permissions-Policy", "camera=(), microphone=(self), geolocation=()");
-    if (process.env.NODE_ENV === "production") {
-      res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload");
-    }
-    next();
-  });
-
+  const server = createServer(app);
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
@@ -93,14 +81,27 @@ async function startServer() {
     serveStatic(app);
   }
 
-  const port =
-    process.env.NODE_ENV === "production"
-      ? parseInt(process.env.PORT || "3000", 10)
-      : await findAvailablePort(parseInt(process.env.PORT || "3000", 10));
+  const isProd = process.env.NODE_ENV === "production";
+  const preferredPort = parseInt(process.env.PORT || "3000");
+  const port = isProd ? preferredPort : await findAvailablePort(preferredPort);
+
+  if (!isProd && port !== preferredPort) {
+    console.log(`Port ${preferredPort} is busy, using port ${port} instead`);
+  }
+
+  server.on("error", (err: any) => {
+    console.error("Server error:", err);
+    if (err.code === "EADDRINUSE") {
+      console.error(`Port ${port} is already in use. Please terminate the conflicting process.`);
+    }
+  });
 
   server.listen(port, "0.0.0.0", () => {
-    console.log(`Server running on http://0.0.0.0:${port}/ (NODE_ENV=${process.env.NODE_ENV || 'development'})`);
+    console.log(`Server successfully listening on http://0.0.0.0:${port}/ (ENV: ${process.env.NODE_ENV || "development"})`);
   });
 }
 
-startServer().catch(console.error);
+startServer().catch((err) => {
+  console.error("Fatal error starting server:", err);
+  process.exit(1);
+});
