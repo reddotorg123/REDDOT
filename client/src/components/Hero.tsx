@@ -137,8 +137,7 @@ const Hero = memo(function Hero() {
       <div className="relative z-10 container max-w-4xl mx-auto px-4 text-center mt-8 md:mt-0">
         {/* Main Headline */}
         <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
-          Architecting <span className="text-gradient">Intelligence</span> for
-          the Modern Enterprise
+          <span className="text-gradient">Reddot</span> — Architecting Intelligence for the Modern Enterprise
         </h1>
 
         {/* Subheadline */}
