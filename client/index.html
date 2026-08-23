@@ -195,7 +195,13 @@
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <!-- Static Semantic Fallback for Bingbot & Search Engine Crawlers -->
+    <header style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;">
+      <h1>Reddot — Official Website | AI, Software & Technology Solutions</h1>
+      <p>Reddot is an enterprise intelligence and technology company building autonomous AI agents, machine learning systems, cloud SaaS, IoT, and custom software architectures.</p>
+    </header>
+  </div>
 
   <!-- Google Translate Element (Hidden) -->
   <div id="google_translate_element" style="display: none; position: absolute; top: -9999px; left: -9999px;"></div>
