@@ -129,7 +129,46 @@
   </noscript>
 
   <!-- Sitemap reference -->
-  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+  <!-- Aggressive Google Translate UI suppression -->
+  <style>
+    .goog-te-banner-frame,
+    .goog-te-banner-frame.skiptranslate,
+    iframe.goog-te-banner-frame,
+    iframe.skiptranslate,
+    .goog-te-balloon-frame,
+    #goog-gt-tt,
+    #goog-gt-vt,
+    .goog-te-banner,
+    .VIpgJd-ZVi9od-ORHb-Oxf5td,
+    .VIpgJd-ZVi9od-aZ2wEe-wOHMyf,
+    .VIpgJd-ZVi9od-vH1Gmf,
+    .VIpgJd-ZVi9od-xl07Ob-Oxf5td,
+    .VIpgJd-yAWNEb-L7eAZc,
+    .VIpgJd-ZVi9od-SmfZ-Oxf5td {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0px !important;
+      width: 0px !important;
+      opacity: 0 !important;
+      position: absolute !important;
+      top: -9999px !important;
+      left: -9999px !important;
+      z-index: -9999 !important;
+      pointer-events: none !important;
+    }
+
+    body {
+      top: 0px !important;
+      position: static !important;
+      margin-top: 0px !important;
+    }
+
+    .goog-text-highlight {
+      background: transparent !important;
+      box-shadow: none !important;
+      border: none !important;
+    }
+  </style>
 </head>
 
 <body>
@@ -198,6 +237,24 @@
         window.location.reload();
       }
     };
+
+    // Keep header & body flush at top without Google translate banner pushing it down
+    setInterval(function() {
+      if (document.body && document.body.style.top && document.body.style.top !== '0px') {
+        document.body.style.top = '0px';
+        document.body.style.position = 'static';
+        document.body.style.marginTop = '0px';
+      }
+      var frames = document.querySelectorAll('.goog-te-banner-frame, iframe[class*="goog-te-banner"], .VIpgJd-ZVi9od-ORHb-Oxf5td, .skiptranslate');
+      for (var i = 0; i < frames.length; i++) {
+        var el = frames[i];
+        if (el.tagName === 'IFRAME') {
+          el.style.display = 'none';
+          el.style.visibility = 'hidden';
+          el.style.height = '0px';
+        }
+      }
+    }, 100);
   </script>
   <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script type="module" src="/src/main.tsx"></script>
