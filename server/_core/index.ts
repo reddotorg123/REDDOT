@@ -34,12 +34,62 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 async function startServer() {
   const app = express();
   const server = createServer(app);
-  // Configure body parser with larger size limit for file uploads
-  app.use(express.json({ limit: "50mb" }));
-  app.use(express.urlencoded({ limit: "50mb", extended: true }));
+
+  // Security: Disable express fingerprint header
+  app.disable("x-powered-by");
+
+  // Security: OWASP Standard HTTP Security Headers
+  app.use((_req, res, next) => {
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    res.setHeader("X-Frame-Options", "SAMEORIGIN");
+    res.setHeader("X-XSS-Protection", "1; mode=block");
+    res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+    res.setHeader("Permissions-Policy", "camera=(), microphone=(self), geolocation=()");
+    next();
+  });
+
+  // Security: In-Memory API Rate Limiter (Prevents DDoS & brute-force)
+  const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+  const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+  const MAX_REQUESTS_PER_WINDOW = 120; // 120 requests/min per IP
+
+  app.use("/api/", (req, res, next) => {
+    if (req.path === "/health") return next();
+    const clientIp =
+      (req.headers["x-forwarded-for"] as string)?.split(",")[0]?.trim() ||
+      req.socket.remoteAddress ||
+      "unknown";
+    const now = Date.now();
+    const record = rateLimitMap.get(clientIp);
+
+    if (!record || now > record.resetTime) {
+      rateLimitMap.set(clientIp, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+      return next();
+    }
+
+    if (record.count >= MAX_REQUESTS_PER_WINDOW) {
+      return res.status(429).json({ error: "Too many requests. Please slow down." });
+    }
+
+    record.count += 1;
+    next();
+  });
+
+  // Healthcheck Route for Nginx / Load Balancer Liveness Probes
+  app.get("/api/health", (_req, res) => {
+    res.status(200).json({
+      status: "healthy",
+      uptime: process.uptime(),
+      timestamp: new Date().toISOString(),
+      environment: process.env.NODE_ENV || "development",
+    });
+  });
+
+  // Configure body parser with size limit for file uploads
+  app.use(express.json({ limit: "25mb" }));
+  app.use(express.urlencoded({ limit: "25mb", extended: true }));
   registerStorageProxy(app);
   registerOAuthRoutes(app);
-
 
   // LiveKit Token Route
   app.get("/api/livekit-token", async (req, res, next) => {
@@ -74,6 +124,7 @@ async function startServer() {
       createContext,
     })
   );
+
   // development mode uses Vite, production mode uses static files
   if (process.env.NODE_ENV === "development") {
     await setupVite(app, server);
@@ -92,13 +143,29 @@ async function startServer() {
   server.on("error", (err: any) => {
     console.error("Server error:", err);
     if (err.code === "EADDRINUSE") {
-      console.error(`Port ${port} is already in use. Please terminate the conflicting process.`);
+      console.error(`Port ${port} is already in use. Terminate conflicting process.`);
     }
   });
 
   server.listen(port, "0.0.0.0", () => {
     console.log(`Server successfully listening on http://0.0.0.0:${port}/ (ENV: ${process.env.NODE_ENV || "development"})`);
   });
+
+  // Zero-Downtime Graceful Shutdown Handler
+  const handleShutdown = (signal: string) => {
+    console.log(`Received ${signal}. Gracefully closing HTTP connections...`);
+    server.close(() => {
+      console.log("Server closed cleanly.");
+      process.exit(0);
+    });
+    setTimeout(() => {
+      console.error("Forced termination after 10s timeout.");
+      process.exit(1);
+    }, 10000);
+  };
+
+  process.on("SIGTERM", () => handleShutdown("SIGTERM"));
+  process.on("SIGINT", () => handleShutdown("SIGINT"));
 }
 
 startServer().catch((err) => {

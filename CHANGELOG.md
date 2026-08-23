@@ -8,6 +8,12 @@ All notable changes, bug fixes, features, and optimizations made to the REDDOT p
 
 ### 🛡️ Production & AWS 502 Bad Gateway Fixes
 - **Port Binding Fix (`server/_core/index.ts`)**: In production mode (`NODE_ENV=production`), the Express server now strictly binds to `process.env.PORT || 3000` on `0.0.0.0`, ensuring NGINX reverse proxy (`http://127.0.0.1:3000`) never encounters port mismatches (502 Bad Gateway).
+- **OWASP Security Headers**: Added `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN` (anti-clickjacking), `X-XSS-Protection`, `Referrer-Policy: strict-origin-when-cross-origin`, and `Permissions-Policy`.
+- **Express Fingerprint Removal**: Disabled `X-Powered-By: Express` header to prevent server technology enumeration.
+- **In-Memory Rate Limiter**: Added IP-based request throttling on all `/api/` endpoints (120 req/min per IP) to protect against DDoS and brute-force abuse.
+- **Health Check Endpoint (`/api/health`)**: Added dedicated liveness probe returning HTTP 200 with uptime and timestamp for NGINX/ALB monitoring.
+- **Graceful Process Shutdown**: Added `SIGTERM` and `SIGINT` connection drain handlers so PM2 reloads complete in-flight requests without dropped packets.
+- **Zero-Downtime Deployment Script (`deploy.sh`)**: Added automated build verification, dependency installation, PM2 reload, and health check validation.
 - **Startup Error Logging**: Added explicit event listeners for `EADDRINUSE` and startup exceptions to log detailed diagnostics in PM2.
 
 ### ⚡ Performance & Core Web Vitals (Lighthouse Optimization)
