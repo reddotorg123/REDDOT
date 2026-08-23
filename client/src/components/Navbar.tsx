@@ -8,7 +8,15 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState("en");
+  const [selectedLanguage, setSelectedLanguage] = useState(() => {
+    try {
+      const match = document.cookie.match(/googtrans=\/en\/([a-z]{2})/);
+      if (match && match[1]) return match[1];
+      const stored = localStorage.getItem("user_selected_lang");
+      if (stored) return stored;
+    } catch (e) {}
+    return "en";
+  });
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
@@ -19,9 +27,19 @@ export default function Navbar() {
       );
     };
 
+    const handleClickOutside = (e: MouseEvent) => {
+      if (!(e.target as HTMLElement).closest(".lang-dropdown-container")) {
+        setIsLangMenuOpen(false);
+      }
+    };
+
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("click", handleClickOutside);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("click", handleClickOutside);
+    };
   }, []);
 
   const navItems = [
@@ -104,7 +122,7 @@ export default function Navbar() {
           </motion.button>
 
           {/* Language Selector */}
-          <div className="relative">
+          <div className="relative lang-dropdown-container">
             <motion.button
               onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
               className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors cursor-pointer text-slate-600 dark:text-slate-300 flex items-center gap-1"

@@ -146,10 +146,49 @@
       }, 'google_translate_element');
     }
 
+    function clearGoogleTranslateCookies() {
+      const hostname = window.location.hostname;
+      const parts = hostname.split('.');
+      const cookies = ['googtrans'];
+      const domains = [
+        '',
+        hostname,
+        '.' + hostname,
+        ...(parts.length > 2 ? ['.' + parts.slice(-2).join('.')] : [])
+      ];
+
+      cookies.forEach(function(c) {
+        domains.forEach(function(d) {
+          document.cookie = c + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;' + (d ? ' domain=' + d + ';' : '');
+        });
+      });
+      try {
+        localStorage.removeItem('user_selected_lang');
+        sessionStorage.removeItem('user_selected_lang');
+      } catch (e) {}
+    }
+
     window.changeLanguage = function(langCode) {
-      if (!langCode) return;
+      if (!langCode || langCode === 'en') {
+        clearGoogleTranslateCookies();
+        var select = document.querySelector('.goog-te-combo');
+        if (select) {
+          select.value = 'en';
+          select.dispatchEvent(new Event('change'));
+        }
+        setTimeout(function() {
+          window.location.reload();
+        }, 150);
+        return;
+      }
+
+      try {
+        localStorage.setItem('user_selected_lang', langCode);
+      } catch (e) {}
+
       document.cookie = "googtrans=/en/" + langCode + "; path=/;";
       document.cookie = "googtrans=/en/" + langCode + "; domain=" + window.location.hostname + "; path=/;";
+      document.cookie = "googtrans=/en/" + langCode + "; domain=." + window.location.hostname + "; path=/;";
       
       var select = document.querySelector('.goog-te-combo');
       if (select) {
