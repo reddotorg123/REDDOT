@@ -21,7 +21,8 @@ All notable changes, bug fixes, features, and optimizations made to the REDDOT p
 - **On-Demand Deferred Google Translate (`client/index.html`, `client/src/components/Navbar.tsx`)**: Converted synchronous external Google Translate script into an asynchronous on-demand loader triggered only when interacting with the language menu, eliminating render-blocking network requests.
 - **1-Year Static Caching (`server/_core/vite.ts`)**: Enabled `Cache-Control: public, max-age=31536000, immutable` headers for all hashed assets (`.js`, `.css`, images, fonts).
 
-### 🎨 Dark Mode & UI Consistency
+### 🎨 Branding, Favicon & UI Consistency
+- **New 3D Hexagon Page Icon & Favicons**: Integrated high-resolution 3D metallic hexagon 'R' emblem as official page favicon (`/favicon.ico`, `/favicon.png`, `/apple-touch-icon.png`, `/images/reddot-icon.png`), and updated `<head>` touch icons in `client/index.html`.
 - **Hero Canvas Dark Mode (`client/src/components/Hero.tsx`)**: Replaced continuous white canvas fill (`rgba(250, 251, 252, 0.15)`) with clean `ctx.clearRect` and theme-aware particle colors (neon blue/cyan `#60a5fa` in dark mode, corporate blue `#2563eb` in light mode).
 - **Universal Dark Mode Overrides (`client/src/index.css`)**: Added global `.dark` utility selectors to ensure every card, container, and text element automatically adapts to dark mode.
 - **Internships Page Dark Mode (`client/src/pages/Internship.tsx`)**: Added explicit dark mode styling to hero, tech ticker, why intern cards, and opening domain cards.
