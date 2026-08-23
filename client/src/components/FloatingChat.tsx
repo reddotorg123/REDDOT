@@ -5,12 +5,12 @@ import { AIChatBox, Message } from "./AIChatBox";
 
 const SYSTEM_PROMPT = `You are REDDOT AI Assistant — a helpful, knowledgeable assistant for REDDOT Innovative Solutions.
 
-REDDOT is a pioneering enterprise AI startup founded in 2026, offering:
+REDDOT is a pioneering enterprise AI company founded in 2024, offering:
 - 16 services: AI Agents, Generative AI, Machine Learning, Deep Learning, LLM Development, RAG Systems, AI Automation, SaaS, Web Development, Mobile Apps, IoT Solutions, Embedded Systems, Cloud Engineering, Cybersecurity, Data Analytics, Digital Transformation
 - 12 industries served: Healthcare, Education, Finance, Manufacturing, Retail, Agriculture, Government, Telecom, Smart Cities, Energy, Automotive
 - Active client roster, multi-sector system deployments
 - Headquarters in Chennai, India
-- Email: kktj909@gmail.com | Phone: +91 80721 63133
+- Email: reddot.org123@gmail.com | Phone: +91 80150 24729
 
 Your role:
 1. Answer questions about REDDOT's services, solutions, and expertise
@@ -72,7 +72,7 @@ What can I help you with today?`,
           lowerContent.includes("book") ||
           lowerContent.includes("schedule")
         ) {
-          response = `I'd love to connect you with our team! 🎯\n\n**Book a free consultation:**\n👉 Visit [our contact page](/contact)\n📧 Email: kktj909@gmail.com\n📞 Call: +91 80721 63133\n💬 WhatsApp: +91 80721 63133\n\nOur consultations are completely free and we'll help you identify the right AI solution for your needs.`;
+          response = `I'd love to connect you with our team! 🎯\n\n**Book a free consultation:**\n👉 Visit [our contact page](/contact)\n📧 Email: reddot.org123@gmail.com\n📞 Call: +91 80150 24729\n💬 WhatsApp: +91 80150 24729\n\nOur consultations are completely free and we'll help you identify the right AI solution for your needs.`;
         } else if (
           lowerContent.includes("rag") ||
           lowerContent.includes("retrieval")
@@ -118,7 +118,7 @@ What can I help you with today?`,
           {
             role: "assistant",
             content:
-              "Sorry, I encountered an issue. Please try again or contact us at kktj909@gmail.com.",
+              "Sorry, I encountered an issue. Please try again or contact us at reddot.org123@gmail.com.",
           },
         ]);
       } finally {

@@ -142,10 +142,7 @@ const Hero = memo(function Hero() {
       {/* Animated Background */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full"
-        style={{
-          background: "linear-gradient(135deg, #FAFBFC 0%, #F8F9FA 100%)",
-        }}
+        className="absolute inset-0 w-full h-full bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-[#070b14]"
       />
 
       {/* Gradient Overlay */}

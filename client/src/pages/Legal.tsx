@@ -126,10 +126,6 @@ export default function Legal() {
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white">4. Contact Our Data Protection Officer</h3>
                 <p>
                   For privacy queries or deletion requests, contact us at{" "}
-                  <a href="mailto:jaikeerthi156@gmail.com" className="text-blue-600 dark:text-blue-400 font-semibold underline">
-                    jaikeerthi156@gmail.com
-                  </a>{" "}
-                  or{" "}
                   <a href="mailto:reddot.org123@gmail.com" className="text-blue-600 dark:text-blue-400 font-semibold underline">
                     reddot.org123@gmail.com
                   </a>.
@@ -248,8 +244,8 @@ export default function Legal() {
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white">Responsible Vulnerability Disclosure</h3>
                 <p>
                   If you believe you have found a security vulnerability in REDDOT systems, please disclose it responsibly by emailing our security team at{" "}
-                  <a href="mailto:jagadish2k2006@gmail.com" className="text-blue-600 dark:text-blue-400 font-semibold underline">
-                    jagadish2k2006@gmail.com
+                  <a href="mailto:reddot.org123@gmail.com" className="text-blue-600 dark:text-blue-400 font-semibold underline">
+                    reddot.org123@gmail.com
                   </a>.
                 </p>
               </section>

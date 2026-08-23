@@ -516,3 +516,97 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ==========================================================================
+   Google Translate UI Clean-up
+   ========================================================================== */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+iframe.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+}
+
+body {
+  top: 0px !important;
+  position: static !important;
+}
+
+.goog-tooltip,
+.goog-tooltip:hover,
+.goog-te-balloon-frame,
+#goog-gt-tt {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.goog-te-combo {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Universal Dark Mode Overrides (Guarantees all pages/cards render in dark mode)
+   ========================================================================== */
+html.dark {
+  color-scheme: dark;
+  background-color: #070b14;
+}
+
+html.dark body {
+  background-color: #070b14 !important;
+  color: #f8fafc !important;
+}
+
+html.dark .bg-white:not([class*="bg-gradient-"]),
+html.dark .bg-slate-50:not([class*="bg-gradient-"]),
+html.dark .bg-gray-50:not([class*="bg-gradient-"]) {
+  background-color: #0f172a !important;
+}
+
+html.dark .bg-slate-100,
+html.dark .bg-gray-100 {
+  background-color: #1e293b !important;
+}
+
+html.dark .text-slate-900,
+html.dark .text-slate-800,
+html.dark .text-gray-900,
+html.dark .text-gray-800 {
+  color: #f8fafc !important;
+}
+
+html.dark .text-slate-700,
+html.dark .text-slate-600,
+html.dark .text-gray-700,
+html.dark .text-gray-600 {
+  color: #cbd5e1 !important;
+}
+
+html.dark .text-slate-500,
+html.dark .text-gray-500 {
+  color: #94a3b8 !important;
+}
+
+html.dark .border-slate-200,
+html.dark .border-slate-100,
+html.dark .border-gray-200,
+html.dark .border-gray-100 {
+  border-color: #1e293b !important;
+}
+
+html.dark .border-slate-300,
+html.dark .border-gray-300 {
+  border-color: #334155 !important;
+}
+
+html.dark .glass {
+  background: rgba(15, 23, 42, 0.85) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+

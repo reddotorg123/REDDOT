@@ -198,32 +198,23 @@ const Footer = memo(function Footer() {
               <div className="space-y-3">
                 <div className="flex flex-col gap-2 text-foreground-tertiary">
                   <div className="flex items-center gap-3 hover:text-foreground transition-colors">
-                    <Mail size={18} className="flex-shrink-0" />
-                    <a href="mailto:jaikeerthi156@gmail.com">
-                      jaikeerthi156@gmail.com
+                    <Mail size={18} className="flex-shrink-0 text-blue-500" />
+                    <a href="mailto:reddot.org123@gmail.com" className="font-medium hover:text-blue-500 transition-colors">
+                      reddot.org123@gmail.com
                     </a>
-                  </div>
-                  <div className="flex items-center gap-3 hover:text-foreground transition-colors pl-7">
-                    <a href="mailto:jagadish2k2006@gmail.com">
-                      jagadish2k2006@gmail.com
-                    </a>
-                  </div>
-                  <div className="flex items-center gap-3 hover:text-foreground transition-colors pl-7">
-                    <a href="mailto:reddot.org123@gmail.com">reddot.org123@gmail.com</a>
                   </div>
                 </div>
-                <div className="flex flex-col gap-2 text-foreground-tertiary mt-3">
+                <div className="flex flex-col gap-2 text-foreground-tertiary mt-2">
                   <div className="flex items-center gap-3 hover:text-foreground transition-colors">
-                    <Phone size={18} className="flex-shrink-0" />
-                    <a href="tel:+918015024729">+91 80150 24729</a>
-                  </div>
-                  <div className="flex items-center gap-3 hover:text-foreground transition-colors pl-7">
-                    <a href="tel:+918072163133">+91 80721 63133</a>
+                    <Phone size={18} className="flex-shrink-0 text-purple-500" />
+                    <a href="tel:+918015024729" className="font-medium hover:text-purple-500 transition-colors">
+                      +91 80150 24729
+                    </a>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 text-foreground-tertiary hover:text-foreground transition-colors mt-3">
-                  <MapPin size={18} className="flex-shrink-0" />
-                  <span>Chennai, India</span>
+                <div className="flex items-center gap-3 text-foreground-tertiary hover:text-foreground transition-colors mt-2">
+                  <MapPin size={18} className="flex-shrink-0 text-emerald-500" />
+                  <span>OMR IT Corridor, Chennai, India</span>
                 </div>
               </div>
             </motion.div>

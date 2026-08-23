@@ -134,6 +134,33 @@
 
 <body>
   <div id="root"></div>
+
+  <!-- Google Translate Element (Hidden) -->
+  <div id="google_translate_element" style="display: none; position: absolute; top: -9999px; left: -9999px;"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,ta,hi,es,de,fr,ja,ar,te,kn,ml',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+
+    window.changeLanguage = function(langCode) {
+      if (!langCode) return;
+      document.cookie = "googtrans=/en/" + langCode + "; path=/;";
+      document.cookie = "googtrans=/en/" + langCode + "; domain=" + window.location.hostname + "; path=/;";
+      
+      var select = document.querySelector('.goog-te-combo');
+      if (select) {
+        select.value = langCode;
+        select.dispatchEvent(new Event('change'));
+      } else {
+        window.location.reload();
+      }
+    };
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 

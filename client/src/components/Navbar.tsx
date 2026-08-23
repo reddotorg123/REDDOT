@@ -132,15 +132,20 @@ export default function Navbar() {
                   { code: "hi", name: "Hindi", native: "हिन्दी" },
                   { code: "es", name: "Spanish", native: "Español" },
                   { code: "de", name: "German", native: "Deutsch" },
+                  { code: "fr", name: "French", native: "Français" },
                   { code: "ja", name: "Japanese", native: "日本語" },
+                  { code: "ar", name: "Arabic", native: "العربية" },
                 ].map((lang) => (
                   <button
                     key={lang.code}
                     onClick={() => {
                       setSelectedLanguage(lang.code);
                       setIsLangMenuOpen(false);
+                      if (typeof (window as any).changeLanguage === "function") {
+                        (window as any).changeLanguage(lang.code);
+                      }
                     }}
-                    className={`w-full px-3 py-2 text-left text-xs font-medium flex items-center justify-between hover:bg-blue-50 dark:hover:bg-slate-800 transition-colors ${
+                    className={`w-full px-3 py-2 text-left text-xs font-medium flex items-center justify-between hover:bg-blue-50 dark:hover:bg-slate-800 transition-colors cursor-pointer ${
                       selectedLanguage === lang.code
                         ? "text-blue-600 dark:text-blue-400 font-bold bg-blue-50/50 dark:bg-slate-800/50"
                         : "text-slate-700 dark:text-slate-300"

@@ -28,7 +28,7 @@ export default function About() {
 
   const timeline = [
     {
-      year: "Q1 2026",
+      year: "Q1 2024",
       title: "Founded",
       description:
         "REDDOT was established in India to design next-generation autonomous AI agents and custom SaaS integrations.",
@@ -109,7 +109,7 @@ export default function About() {
       bg: "bg-blue-50",
     },
     {
-      number: "2026",
+      number: "2024",
       label: "Founded in India",
       icon: Globe,
       color: "text-purple-600",
