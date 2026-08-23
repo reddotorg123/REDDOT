@@ -1,38 +1,20 @@
 # REDDOT Innovative Solutions - robots.txt
-# Generated for search engine optimization
+# Optimized for Googlebot, Bingbot & Search Indexers
 
 User-agent: *
 Allow: /
-Disallow: /admin/
 Disallow: /api/
 Disallow: /private/
-Disallow: /*.json$
-Disallow: /*.xml$
 Disallow: /*?*sort=
 Disallow: /*?*filter=
-
-# Crawl delay
-Crawl-delay: 1
 
 # Specific rules for Google
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 0
 
 # Specific rules for Bing
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 1
-
-# Block bad bots
-User-agent: MJ12bot
-Disallow: /
-
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: SemrushBot
-Disallow: /
 
 # Sitemaps
 Sitemap: https://reddot.org.in/sitemap.xml
