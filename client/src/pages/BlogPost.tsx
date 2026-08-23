@@ -278,7 +278,96 @@ Operational scaling usually requires hiring more teams. Intelligent automation l
 Across our deployments, enterprises have seen an average 70% reduction in workflow processing times, with data entry errors falling to absolute zero.
     `,
   },
+  "full-stack-ai-architecture-microservices": {
+    slug: "full-stack-ai-architecture-microservices",
+    title: "Full-Stack AI Architecture: Scaling Distributed Agentic Microservices",
+    excerpt:
+      "A complete deep-dive into constructing resilient, sub-second microservices for autonomous agent swarms, async queue orchestration, and streaming event buses.",
+    category: "Software",
+    author: "Jagadish",
+    authorRole: "Lead Software Architect",
+    authorBio:
+      "Jagadish leads core software systems and backend architecture at REDDOT, specializing in high-throughput distributed systems, event-driven streaming, and full-stack AI platforms.",
+    date: "May 28, 2026",
+    readTime: "11 min read",
+    tags: ["Software", "Architecture", "Microservices", "TypeScript"],
+    coverGradient: "from-indigo-600 to-cyan-600",
+    image:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
+    content: `
+## Introduction
+
+Modern generative and agentic AI requires a complete reimagining of the traditional client-server architecture. When autonomous swarms make recursive tool calls and stream tokens in parallel, traditional REST request-response cycles break down.
+
+## Core Architectural Pillars
+
+To handle tens of thousands of concurrent agentic operations with sub-100ms latency, we design systems around three foundational layers:
+
+- **Asynchronous Task Orchestration**: Decoupling long-running reasoning loops from API gateway connections via Redis Streams and durable state machines.
+- **Bi-Directional Streaming Gateways**: Leveraging WebSockets and Server-Sent Events (SSE) for zero-latency token dispatch and interactive human-in-the-loop checkpoints.
+- **Sandboxed Tool Containers**: Isolating Python and Bash execution environments with strict resource constraints and network egress boundaries.
+
+## Scaling the Database Layer
+
+Traditional relational models struggle with embedding lookups and vector neighbor searches under heavy write pressure. By combining PostgreSQL (with pgvector) for operational metadata and dedicated vector indexes for semantic cache hits, query latencies stay consistent below 15ms.
+
+## Production Lessons Learned
+
+1. **Implement Aggressive Token Caching**: Cache common tool definitions and invariant prompt prefixes to save 40% in API overhead.
+2. **Circuit Breakers for External Tools**: Wrap all external HTTP and DB calls in automated circuit breakers to prevent cascade failures.
+3. **Structured Telemetry**: Every agent action must produce a structured OpenTelemetry trace for transparent debugging.
+    `,
+  },
+  "realtime-websockets-multi-agent-systems": {
+    slug: "realtime-websockets-multi-agent-systems",
+    title: "High-Throughput WebSockets for Real-Time Multi-Agent Collaboration",
+    excerpt:
+      "Engineering event-driven WebSocket and RPC pipelines to coordinate concurrent swarms of specialized cognitive AI agents with zero latency.",
+    category: "Software",
+    author: "Jaikeerthi",
+    authorRole: "AI Specialist",
+    authorBio:
+      "Jaikeerthi leads AI Research & Engineering at REDDOT, pioneering autonomous cognitive swarm architectures, low-latency reasoning engines, and interactive real-time multi-agent systems.",
+    date: "May 20, 2026",
+    readTime: "9 min read",
+    tags: ["Software", "WebSockets", "Multi-Agent", "Real-Time"],
+    coverGradient: "from-blue-600 to-indigo-600",
+    image:
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
+    content: `
+## Introduction
+
+Real-time multi-agent swarms require instantaneous state synchronization. When specialist agents collaborate on complex reasoning workflows, communication latency directly impacts user experience.
+
+## WebSocket Pipeline Design
+
+We deploy lightweight binary protocol serialization over multiplexed WebSocket channels to achieve sub-millisecond inter-agent communication:
+
+- **State Broadcast Channels**: Real-time pub/sub distribution of agent thoughts and tool executions.
+- **Backpressure Handling**: Adaptive rate-limiting preventing client buffer overflows during high-velocity reasoning streams.
+- **Resilient Reconnection**: Automatic state recovery upon intermittent network disconnects.
+
+## Real-World Performance
+
+In stress tests simulating 500 concurrent autonomous agents executing live database mutations and semantic searches, message delivery remained stable at 99.99% with median latency under 8ms.
+    `,
+  },
 };
+
+function renderMarkdownText(text: string) {
+  // Parse inline bold **text**
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong key={i} className="font-bold text-slate-900 dark:text-white">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    return part;
+  });
+}
 
 export default function BlogPost() {
   const params = useParams<{ slug: string }>();
@@ -290,6 +379,16 @@ export default function BlogPost() {
     navigator.clipboard.writeText(window.location.href);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleTwitterShare = () => {
+    const url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(post?.title || "REDDOT AI Article")}`;
+    window.open(url, "_blank", "noopener,noreferrer,width=600,height=400");
+  };
+
+  const handleLinkedInShare = () => {
+    const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`;
+    window.open(url, "_blank", "noopener,noreferrer,width=600,height=500");
   };
 
   if (!post) {
@@ -401,15 +500,15 @@ export default function BlogPost() {
         </div>
       </div>
 
-      {/* Content + Sidebar Grid */}
-      <div className="container py-16">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Main Content (8 cols) */}
+      {/* Main Content Area */}
+      <div className="container max-w-7xl mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Article body (8 cols) */}
           <motion.div
             className="lg:col-span-8"
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
             {/* Cover Image container */}
             <div className="w-full h-[350px] md:h-[450px] rounded-3xl overflow-hidden shadow-xl border border-slate-200 mb-10 dark:border-slate-800">
@@ -442,86 +541,57 @@ export default function BlogPost() {
                 .trim()
                 .split("\n")
                 .map((line, idx) => {
-                  if (line.startsWith("## ")) {
+                  const trimmed = line.trim();
+                  if (trimmed.startsWith("## ")) {
                     return (
                       <h2
                         key={idx}
                         className="text-3xl font-black text-slate-900 mt-12 mb-6 dark:text-white tracking-tight"
                       >
-                        {line.slice(3)}
+                        {renderMarkdownText(trimmed.slice(3))}
                       </h2>
                     );
                   }
-                  if (line.startsWith("### ")) {
+                  if (trimmed.startsWith("### ")) {
                     return (
                       <h3
                         key={idx}
                         className="text-xl font-bold text-slate-900 mt-8 mb-4 dark:text-white"
                       >
-                        {line.slice(4)}
+                        {renderMarkdownText(trimmed.slice(4))}
                       </h3>
                     );
                   }
-                  if (line.startsWith("**") && line.endsWith("**")) {
-                    return null;
-                  }
-                  if (line.startsWith("- **")) {
-                    const match = line.match(/^- \*\*(.+?)\*\* — (.+)/);
-                    if (match) {
-                      return (
-                        <div key={idx} className="flex gap-3 mb-3">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-3 flex-shrink-0" />
-                          <p className="text-slate-600 dark:text-slate-400">
-                            <strong className="text-slate-900 dark:text-white font-bold">
-                              {match[1]}
-                            </strong>{" "}
-                            — {match[2]}
-                          </p>
-                        </div>
-                      );
-                    }
-                  }
-                  if (line.match(/^\d+\. \*\*/)) {
-                    const match = line.match(/^(\d+)\. \*\*(.+?)\*\* — (.+)/);
-                    if (match) {
-                      return (
-                        <div key={idx} className="flex gap-3 mb-3">
-                          <span className="w-6 h-6 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center flex-shrink-0 mt-1 font-bold">
-                            {match[1]}
-                          </span>
-                          <p className="text-slate-600 dark:text-slate-400">
-                            <strong className="text-slate-900 dark:text-white font-bold">
-                              {match[2]}
-                            </strong>{" "}
-                            — {match[3]}
-                          </p>
-                        </div>
-                      );
-                    }
-                  }
-                  if (line.startsWith("**") && line.includes("**:")) {
-                    const match = line.match(/^\*\*(.+?)\*\*: (.+)/);
-                    if (match) {
-                      return (
-                        <p
-                          key={idx}
-                          className="text-slate-600 dark:text-slate-400 mb-3"
-                        >
-                          <strong className="text-slate-900 dark:text-white font-bold">
-                            {match[1]}
-                          </strong>
-                          : {match[2]}
+                  if (trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
+                    return (
+                      <div key={idx} className="flex items-start gap-3 mb-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400 mt-2.5 flex-shrink-0" />
+                        <p className="text-slate-600 dark:text-slate-400 flex-1 leading-relaxed">
+                          {renderMarkdownText(trimmed.slice(2))}
                         </p>
-                      );
-                    }
+                      </div>
+                    );
                   }
-                  if (line.trim() === "") return <br key={idx} />;
+                  const numMatch = trimmed.match(/^(\d+)\.\s+(.*)/);
+                  if (numMatch) {
+                    return (
+                      <div key={idx} className="flex items-start gap-3 mb-3">
+                        <span className="w-6 h-6 rounded-full bg-blue-600 text-white text-xs flex items-center justify-center flex-shrink-0 mt-0.5 font-bold">
+                          {numMatch[1]}
+                        </span>
+                        <p className="text-slate-600 dark:text-slate-400 flex-1 leading-relaxed">
+                          {renderMarkdownText(numMatch[2])}
+                        </p>
+                      </div>
+                    );
+                  }
+                  if (trimmed === "") return <br key={idx} />;
                   return (
                     <p
                       key={idx}
                       className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4"
                     >
-                      {line}
+                      {renderMarkdownText(trimmed)}
                     </p>
                   );
                 })}
@@ -532,31 +602,36 @@ export default function BlogPost() {
               <p className="text-sm font-bold text-foreground mb-4 uppercase tracking-widest font-mono">
                 Share this article
               </p>
-              <div className="flex gap-3">
+              <div className="flex flex-wrap gap-3">
                 <motion.button
-                  className="flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:border-slate-800 dark:text-slate-400 dark:hover:text-blue-400"
+                  onClick={handleTwitterShare}
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:border-slate-800 dark:text-slate-400 dark:hover:text-blue-400 cursor-pointer shadow-sm"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  title="Share on Twitter / X"
                 >
-                  <Twitter className="w-4 h-4" />
-                  Twitter
+                  <Twitter className="w-4 h-4 text-sky-500" />
+                  Twitter / X
                 </motion.button>
                 <motion.button
-                  className="flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:border-slate-800 dark:text-slate-400 dark:hover:text-blue-400"
+                  onClick={handleLinkedInShare}
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:border-slate-800 dark:text-slate-400 dark:hover:text-blue-400 cursor-pointer shadow-sm"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  title="Share on LinkedIn"
                 >
-                  <Linkedin className="w-4 h-4" />
+                  <Linkedin className="w-4 h-4 text-blue-600" />
                   LinkedIn
                 </motion.button>
                 <motion.button
-                  className="flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:border-slate-800 dark:text-slate-400 dark:hover:text-blue-400"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:border-blue-400 hover:text-blue-600 transition-all dark:border-slate-800 dark:text-slate-400 dark:hover:text-blue-400 cursor-pointer shadow-sm"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handleCopyLink}
+                  title="Copy Article Link"
                 >
                   <Link2 className="w-4 h-4" />
-                  {copied ? "Copied!" : "Copy Link"}
+                  {copied ? "Copied Link!" : "Copy Link"}
                 </motion.button>
               </div>
             </div>

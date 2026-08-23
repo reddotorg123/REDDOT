@@ -66,10 +66,10 @@ export default function Statistics() {
     },
     {
       icon: Briefcase,
-      value: 2026,
+      value: 2024,
       suffix: "",
       label: "Established",
-      description: "Initiated in India as a pioneering AI startup",
+      description: "Founded in India as a pioneering AI company",
       color: "text-purple-600",
       gradient: "from-purple-500 to-purple-600",
     },

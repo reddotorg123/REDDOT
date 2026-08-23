@@ -276,7 +276,10 @@ export default function Team() {
               innovators to join our mission of building the future of AI.
             </p>
             <motion.button
-              className="px-8 py-4 bg-white text-blue-600 rounded-lg hover:bg-slate-100 font-semibold transition-all inline-flex items-center gap-2"
+              onClick={() => {
+                window.location.href = "/career#open-positions";
+              }}
+              className="px-8 py-4 bg-white text-blue-600 rounded-lg hover:bg-slate-100 font-semibold transition-all inline-flex items-center gap-2 cursor-pointer shadow-lg"
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0 20px 40px rgba(0,0,0,0.2)",

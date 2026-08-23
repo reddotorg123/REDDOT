@@ -643,21 +643,28 @@ export default function Contact() {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Map Placeholder */}
+            {/* Office Visual & Map */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="rounded-2xl overflow-hidden h-96 border border-slate-200"
+              className="rounded-3xl overflow-hidden h-[420px] border border-slate-200 dark:border-slate-800 relative group shadow-xl"
             >
               <img
                 loading="lazy"
                 decoding="async"
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80"
-                alt="REDDOT HQ Office"
-                className="w-full h-full object-cover"
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
+                alt="REDDOT HQ Innovation Campus, Chennai"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
+                <span className="text-xs font-bold uppercase tracking-widest text-blue-400 bg-blue-950/60 px-3 py-1 rounded-full w-fit mb-2 border border-blue-800/60 backdrop-blur-sm">
+                  Chennai Technology Corridor
+                </span>
+                <h4 className="text-xl font-bold">REDDOT AI Global HQ</h4>
+                <p className="text-xs text-slate-300">OMR IT Expressway, Chennai, India</p>
+              </div>
             </motion.div>
 
             {/* Office Info */}
@@ -666,35 +673,40 @@ export default function Contact() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="space-y-8"
+              className="space-y-6"
             >
-              <div className="p-8 rounded-2xl border border-slate-200 bg-white hover:border-blue-500 transition-all">
-                <MapPin className="w-8 h-8 text-blue-600 mb-4" />
+              <div className="p-8 rounded-3xl border border-slate-200 bg-white hover:border-blue-500 transition-all dark:bg-slate-900 dark:border-slate-800 shadow-md">
+                <MapPin className="w-8 h-8 text-blue-600 dark:text-blue-400 mb-4" />
                 <h3 className="text-2xl font-bold text-foreground mb-2">
                   REDDOT AI India HQ
                 </h3>
-                <p className="text-slate-600 mb-4">
+                <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed">
                   REDDOT Towers, 4th Floor
                   <br />
-                  OMR Road, Chennai, Tamil Nadu 600096
+                  OMR IT Expressway, Chennai, Tamil Nadu 600096
                   <br />
                   India
                 </p>
-                <Button className="bg-blue-600 text-white hover:bg-blue-700">
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=OMR+Chennai+Tamil+Nadu+India"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-6 py-2.5 rounded-xl bg-blue-600 text-white font-bold hover:bg-blue-700 transition-colors shadow-md text-sm cursor-pointer"
+                >
                   Get Directions
-                </Button>
+                </a>
               </div>
 
-              <div className="p-8 rounded-2xl border border-slate-200 bg-white hover:border-blue-500 transition-all">
+              <div className="p-8 rounded-3xl border border-slate-200 bg-white hover:border-blue-500 transition-all dark:bg-slate-900 dark:border-slate-800 shadow-md">
                 <h4 className="text-lg font-bold text-foreground mb-4">
                   Business Hours
                 </h4>
-                <div className="space-y-2 text-slate-600">
+                <div className="space-y-2 text-slate-600 dark:text-slate-300 text-sm">
                   <p>
-                    <strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM PST
+                    <strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM IST
                   </p>
                   <p>
-                    <strong>Saturday:</strong> 10:00 AM - 4:00 PM PST
+                    <strong>Saturday:</strong> 10:00 AM - 4:00 PM IST
                   </p>
                   <p>
                     <strong>Sunday:</strong> Closed
@@ -702,21 +714,20 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="p-8 rounded-2xl border border-slate-200 bg-white hover:border-blue-500 transition-all">
-                <h4 className="text-lg font-bold text-foreground mb-4">
-                  Schedule a Meeting
+              <div className="p-8 rounded-3xl border border-slate-200 bg-white hover:border-blue-500 transition-all dark:bg-slate-900 dark:border-slate-800 shadow-md">
+                <h4 className="text-lg font-bold text-foreground mb-2">
+                  Schedule a Virtual Consultation
                 </h4>
-                <p className="text-slate-600 mb-4">
-                  Can't visit in person? Schedule a virtual meeting with our
-                  team.
+                <p className="text-slate-600 dark:text-slate-300 mb-4 text-sm">
+                  Can't visit in person? Connect directly with our enterprise AI engineering team.
                 </p>
                 <Button
                   onClick={() =>
                     window.dispatchEvent(new CustomEvent("open-booking"))
                   }
-                  className="w-full bg-purple-600 text-white hover:bg-purple-700"
+                  className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:opacity-90 font-bold py-3 rounded-xl shadow-lg cursor-pointer"
                 >
-                  Book a Call
+                  Book a Consultation Call
                 </Button>
               </div>
             </motion.div>

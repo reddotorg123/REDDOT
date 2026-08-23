@@ -234,11 +234,161 @@ const INDUSTRIES_DATA: IndustryDetail[] = [
       },
     ],
   },
+  {
+    id: "education",
+    name: "Education & EdTech",
+    tagline: "Autonomous personalized tutoring and automated grading pipelines.",
+    description:
+      "We design adaptive cognitive learning systems that dynamically adjust pedagogical difficulty, formulate personalized study roadmaps, and automate rubric-based exam assessments at massive scale.",
+    mainImage:
+      "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=800",
+    gallery: [
+      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=800",
+    ],
+    metrics: [
+      { value: "3.2x", label: "Learning Retention Boost" },
+      { value: "85%", label: "Grading Turnaround Reduction" },
+      { value: "98.4%", label: "Curriculum Alignment" },
+    ],
+    applications: [
+      "Real-Time Socratic AI Tutors",
+      "Multimodal Rubric Evaluators",
+      "Dynamic Knowledge Graph Builders",
+      "Automated Student Attrition Predictors",
+    ],
+    capabilities: [
+      {
+        name: "Cognitive Mastery Tracking",
+        desc: "Continuous Bayesian knowledge tracing to pinpoint exact conceptual student misconceptions.",
+      },
+      {
+        name: "Semantic Code & Essay Graders",
+        desc: "Automated syntax and logic verification with constructive step-by-step guidance.",
+      },
+    ],
+  },
+  {
+    id: "retail",
+    name: "Retail & E-Commerce",
+    tagline: "Predictive supply demand, dynamic pricing, and visual search.",
+    description:
+      "REDDOT retail systems deploy generative visual search, localized inventory forecasting, and real-time behavioral recommender swarms that maximize checkout conversions and minimize stockouts.",
+    mainImage:
+      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800",
+    gallery: [
+      "https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=800",
+    ],
+    metrics: [
+      { value: "38%", label: "Basket Conversion Lift" },
+      { value: "45%", label: "Reduction in Overstock" },
+      { value: "12ms", label: "Visual Search Indexing" },
+    ],
+    applications: [
+      "Camera-based Checkout Recognition",
+      "Algorithmic Dynamic Price Optimization",
+      "Hyper-Personalized Recommendation Engines",
+      "Omnichannel Returns Fraud Protection",
+    ],
+    capabilities: [
+      {
+        name: "Visual Search Vector Index",
+        desc: "Instant image-to-SKU matching matching user camera snaps against inventory catalogs.",
+      },
+      {
+        name: "Real-Time Basket Optimizers",
+        desc: "Predictive affinities model boosting average order value through dynamic bundle offerings.",
+      },
+    ],
+  },
+  {
+    id: "telecom",
+    name: "Telecommunications",
+    tagline: "Cell tower beamforming optimization and zero-touch network heals.",
+    description:
+      "We orchestrate real-time telecom radio access network (RAN) schedulers, optical packet routing intelligence, and autonomous customer resolution agents for tier-1 network carriers.",
+    mainImage:
+      "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=800",
+    gallery: [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800",
+    ],
+    metrics: [
+      { value: "99.999%", label: "Carrier Availability" },
+      { value: "60%", label: "Faster Outage Resolution" },
+      { value: "22%", label: "Tower Power Savings" },
+    ],
+    applications: [
+      "Beamforming Neural Predictors",
+      "Self-Healing Core Switch Routing",
+      "Voice Call Quality Heuristics",
+      "Autonomous 24/7 Support Swarms",
+    ],
+    capabilities: [
+      {
+        name: "Predictive RAN Scaling",
+        desc: "Anticipating stadium and transit congestion to reallocate frequency bands proactively.",
+      },
+      {
+        name: "Autonomous Fiber Loop Repair",
+        desc: "Instant signal degradation isolation and automated optical rerouting.",
+      },
+    ],
+  },
+  {
+    id: "automotive",
+    name: "Automotive & Autonomous Systems",
+    tagline: "Edge vision kinematics, fleet telemetry, and predictive maintenance.",
+    description:
+      "REDDOT automotive pipelines process gigabytes of sensor telemetry per second, supporting ADAS driver monitoring, edge visual odometry, and connected fleet battery health diagnostics.",
+    mainImage:
+      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=800",
+    gallery: [
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=800",
+    ],
+    metrics: [
+      { value: "8ms", label: "Kinematic Edge Inference" },
+      { value: "99.9%", label: "Pedestrian Collision Shield" },
+      { value: "18%", label: "EV Battery Life Extension" },
+    ],
+    applications: [
+      "Edge ADAS Camera Neural Networks",
+      "Driver Drowsiness Alert Monitors",
+      "Connected Fleet Telemetry Routing",
+      "Battery Thermal Runaway Predictors",
+    ],
+    capabilities: [
+      {
+        name: "Low-Power Edge Perception",
+        desc: "Quantized 8-bit convolutional models running on in-vehicle microcontrollers.",
+      },
+      {
+        name: "Fleet Battery Health Twin",
+        desc: "Electrochemical cycle modeling to optimize EV fast-charging profiles.",
+      },
+    ],
+  },
 ];
 
 export default function Industries() {
   const [selectedIndustry, setSelectedIndustry] =
     useState<IndustryDetail | null>(null);
+
+  React.useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (hash) {
+        const found = INDUSTRIES_DATA.find((ind) => ind.id === hash);
+        if (found) {
+          setSelectedIndustry(found);
+        }
+      }
+    };
+
+    handleHash();
+    window.addEventListener("hashchange", handleHash);
+    return () => window.removeEventListener("hashchange", handleHash);
+  }, []);
 
   return (
     <div className="w-full min-h-screen bg-slate-50 dark:bg-slate-950 pb-24">

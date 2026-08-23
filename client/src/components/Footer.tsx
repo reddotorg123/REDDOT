@@ -1,11 +1,33 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, Linkedin, Twitter, Github } from "lucide-react";
+import { Mail, MapPin, Phone, Linkedin, Twitter, Github, CheckCircle2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { toast } from "sonner";
 
 const Footer = memo(function Footer() {
   const currentYear = new Date().getFullYear();
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || !email.includes("@")) {
+      toast.error("Invalid email address", {
+        description: "Please enter a valid email to subscribe to updates.",
+      });
+      return;
+    }
+    setIsSubmitting(true);
+    setTimeout(() => {
+      toast.success("Subscribed successfully!", {
+        description: "Thank you for subscribing to REDDOT AI updates & insights.",
+        duration: 5000,
+      });
+      setEmail("");
+      setIsSubmitting(false);
+    }, 400);
+  };
 
   const footerSections = [
     {
@@ -60,7 +82,7 @@ const Footer = memo(function Footer() {
         { label: "Privacy Policy", href: "/privacy" },
         { label: "Terms of Service", href: "/terms" },
         { label: "Cookie Policy", href: "/cookies" },
-        { label: "Security", href: "#" },
+        { label: "Security", href: "/security" },
       ],
     },
   ];
@@ -111,16 +133,30 @@ const Footer = memo(function Footer() {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3">
+          <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
             <Input
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               className="flex-1"
+              required
             />
-            <Button className="bg-gradient-primary text-white">
-              Subscribe
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="bg-gradient-primary text-white cursor-pointer hover:opacity-90 transition-opacity"
+            >
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  Subscribing...
+                </>
+              ) : (
+                "Subscribe"
+              )}
             </Button>
-          </div>
+          </form>
         </div>
       </motion.div>
 

@@ -5,6 +5,7 @@ import { Link } from "wouter";
 export default function Industries() {
   const industries = [
     {
+      id: "healthcare",
       name: "Healthcare",
       image:
         "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800",
@@ -12,6 +13,7 @@ export default function Industries() {
         "AI-driven diagnostics, predictive patient care, and streamlined hospital operations.",
     },
     {
+      id: "education",
       name: "Education",
       image:
         "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=800",
@@ -19,6 +21,7 @@ export default function Industries() {
         "Personalized learning pathways, automated grading, and intelligent tutoring systems.",
     },
     {
+      id: "finance",
       name: "Finance",
       image:
         "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800",
@@ -26,6 +29,7 @@ export default function Industries() {
         "Algorithmic trading, fraud detection, and automated risk assessment algorithms.",
     },
     {
+      id: "manufacturing",
       name: "Manufacturing",
       image:
         "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
@@ -33,6 +37,7 @@ export default function Industries() {
         "Robotic automation, predictive maintenance, and intelligent supply chain routing.",
     },
     {
+      id: "retail",
       name: "Retail",
       image:
         "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800",
@@ -40,6 +45,7 @@ export default function Industries() {
         "Inventory forecasting, personalized recommendations, and dynamic pricing models.",
     },
     {
+      id: "agriculture",
       name: "Agriculture",
       image:
         "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=800",
@@ -47,13 +53,7 @@ export default function Industries() {
         "Drone-assisted crop monitoring, yield prediction, and automated precision farming.",
     },
     {
-      name: "Government",
-      image:
-        "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&q=80&w=800",
-      description:
-        "Secure data management, smart infrastructure, and citizen-centric AI services.",
-    },
-    {
+      id: "telecom",
       name: "Telecommunications",
       image:
         "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=800",
@@ -61,6 +61,7 @@ export default function Industries() {
         "Network optimization, predictive fault detection, and automated customer support.",
     },
     {
+      id: "smart-cities",
       name: "Smart Cities",
       image:
         "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&q=80&w=800",
@@ -68,6 +69,7 @@ export default function Industries() {
         "Traffic optimization, automated grid management, and public safety analytics.",
     },
     {
+      id: "energy",
       name: "Energy",
       image:
         "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=800",
@@ -75,18 +77,12 @@ export default function Industries() {
         "Smart grid load balancing, renewable energy forecasting, and infrastructure monitoring.",
     },
     {
+      id: "automotive",
       name: "Automotive",
       image:
         "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=800",
       description:
         "Autonomous driving algorithms, advanced driver-assistance systems, and fleet logistics.",
-    },
-    {
-      name: "Healthcare Tech",
-      image:
-        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800",
-      description:
-        "Medical imaging analysis, genomics, and real-time health monitoring systems.",
     },
   ];
 
@@ -166,7 +162,7 @@ export default function Industries() {
           viewport={{ once: true, margin: "-100px" }}
         >
           {industries.map((industry, idx) => (
-            <Link key={idx} href="/industries" className="block">
+            <Link key={idx} href={`/industries#${industry.id}`} className="block">
               <motion.div
                 variants={itemVariants}
                 className="group relative h-[400px] rounded-3xl overflow-hidden cursor-pointer"

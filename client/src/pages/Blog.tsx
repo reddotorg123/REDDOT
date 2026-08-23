@@ -131,6 +131,40 @@ const BLOG_POSTS: BlogPost[] = [
     image:
       "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80",
   },
+  {
+    id: 7,
+    slug: "full-stack-ai-architecture-microservices",
+    title: "Full-Stack AI Architecture: Scaling Distributed Agentic Microservices",
+    excerpt:
+      "A complete deep-dive into constructing resilient, sub-second microservices for autonomous agent swarms, async queue orchestration, and streaming event buses.",
+    category: "Software",
+    author: "Jagadish",
+    authorRole: "Lead Software Architect",
+    date: "May 28, 2026",
+    readTime: "11 min read",
+    featured: false,
+    tags: ["Software", "Architecture", "Microservices", "TypeScript"],
+    coverGradient: "from-indigo-600 to-cyan-600",
+    image:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: 8,
+    slug: "realtime-websockets-multi-agent-systems",
+    title: "High-Throughput WebSockets for Real-Time Multi-Agent Collaboration",
+    excerpt:
+      "Engineering event-driven WebSocket and RPC pipelines to coordinate concurrent swarms of specialized cognitive AI agents with zero latency.",
+    category: "Software",
+    author: "Jaikeerthi",
+    authorRole: "AI Specialist",
+    date: "May 20, 2026",
+    readTime: "9 min read",
+    featured: false,
+    tags: ["Software", "WebSockets", "Multi-Agent", "Real-Time"],
+    coverGradient: "from-blue-600 to-indigo-600",
+    image:
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
+  },
 ];
 
 const categories = [

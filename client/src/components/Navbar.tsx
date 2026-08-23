@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState("en");
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
@@ -88,31 +90,78 @@ export default function Navbar() {
         </div>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 sm:gap-4 relative">
           {/* Search */}
           <motion.button
-            className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
+            onClick={() => window.dispatchEvent(new CustomEvent("open-search"))}
+            className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors cursor-pointer text-slate-600 dark:text-slate-300"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
+            title="Search (Ctrl+K)"
+            aria-label="Search"
           >
-            <Search size={20} className="text-slate-600 dark:text-slate-300" />
+            <Search size={20} />
           </motion.button>
 
           {/* Language Selector */}
-          <motion.button
-            className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Globe size={20} className="text-slate-600 dark:text-slate-300" />
-          </motion.button>
+          <div className="relative">
+            <motion.button
+              onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+              className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors cursor-pointer text-slate-600 dark:text-slate-300 flex items-center gap-1"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              title="Change Language"
+              aria-label="Language Selector"
+            >
+              <Globe size={20} />
+            </motion.button>
+
+            {isLangMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                className="absolute right-0 mt-2 w-48 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 py-2 z-50 overflow-hidden"
+              >
+                <div className="px-3 py-1.5 text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider border-b border-slate-100 dark:border-slate-800">
+                  Select Language
+                </div>
+                {[
+                  { code: "en", name: "English (Default)", native: "English" },
+                  { code: "ta", name: "Tamil", native: "தமிழ்" },
+                  { code: "hi", name: "Hindi", native: "हिन्दी" },
+                  { code: "es", name: "Spanish", native: "Español" },
+                  { code: "de", name: "German", native: "Deutsch" },
+                  { code: "ja", name: "Japanese", native: "日本語" },
+                ].map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => {
+                      setSelectedLanguage(lang.code);
+                      setIsLangMenuOpen(false);
+                    }}
+                    className={`w-full px-3 py-2 text-left text-xs font-medium flex items-center justify-between hover:bg-blue-50 dark:hover:bg-slate-800 transition-colors ${
+                      selectedLanguage === lang.code
+                        ? "text-blue-600 dark:text-blue-400 font-bold bg-blue-50/50 dark:bg-slate-800/50"
+                        : "text-slate-700 dark:text-slate-300"
+                    }`}
+                  >
+                    <span>{lang.name}</span>
+                    <span className="text-slate-400 text-[10px]">{lang.native}</span>
+                  </button>
+                ))}
+              </motion.div>
+            )}
+          </div>
 
           {/* Dark Mode Toggle */}
           <motion.button
             onClick={toggleTheme}
-            className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
+            className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors cursor-pointer"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
+            title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            aria-label="Toggle Theme"
           >
             {theme === "dark" ? (
               <Sun size={20} className="text-amber-400" />

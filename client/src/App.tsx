@@ -17,11 +17,13 @@ const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const Products = lazy(() => import("./pages/Products"));
 const IndustriesPage = lazy(() => import("./pages/Industries"));
+const Legal = lazy(() => import("./pages/Legal"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const AvatarWidget = lazy(
   () => import("./components/AvatarWidget/AvatarWidget")
 );
 const BookingModal = lazy(() => import("./components/BookingModal"));
+const SearchModal = lazy(() => import("./components/SearchModal"));
 
 // Minimal skeleton while routes load
 const PageSkeleton = () => (
@@ -67,6 +69,10 @@ function Router() {
           <Route path={"/internship"} component={Internship} />
           <Route path={"/blog"} component={Blog} />
           <Route path={"/blog/:slug"} component={BlogPost} />
+          <Route path={"/privacy"} component={Legal} />
+          <Route path={"/terms"} component={Legal} />
+          <Route path={"/cookies"} component={Legal} />
+          <Route path={"/security"} component={Legal} />
           <Route path={"/404"} component={NotFound} />
           {/* Final fallback route */}
           <Route component={NotFound} />
@@ -76,6 +82,7 @@ function Router() {
       <DeferredAvatarWidget />
       <Suspense fallback={null}>
         <BookingModal />
+        <SearchModal />
       </Suspense>
     </>
   );

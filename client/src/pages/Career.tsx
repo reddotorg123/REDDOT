@@ -209,29 +209,26 @@ export default function Career() {
           </motion.h1>
 
           <motion.p
-            className="text-xl text-slate-600 max-w-2xl mx-auto mb-8"
+            className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-8"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Founded in 2026, REDDOT is a pioneering AI engineering startup. Join our fast-growing team of builders in India working on next-generation intelligence products.
+            Founded in 2024, REDDOT is a pioneering AI engineering company. Join our fast-growing team of builders in India working on next-generation intelligence products.
           </motion.p>
 
-          {/* Floating Scroll Indicator */}
           <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex justify-center gap-4"
           >
-            <div className="flex justify-center">
-              <div className="w-6 h-10 border-2 border-blue-600 rounded-full flex items-start justify-center p-2">
-                <motion.div
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="w-1 h-2 bg-blue-600 rounded-full"
-                />
-              </div>
-            </div>
+            <Button
+              onClick={() => document.getElementById('open-positions')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-xl shadow-lg shadow-blue-500/25 cursor-pointer"
+            >
+              View Open Positions <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
           </motion.div>
         </motion.div>
       </section>
@@ -315,7 +312,7 @@ export default function Career() {
       </section>
 
       {/* Job Listings Section */}
-      <section className="py-24 bg-background-secondary relative">
+      <section id="open-positions" className="py-24 bg-background-secondary relative scroll-mt-20">
         <div className="container">
           {/* Section Header */}
           <motion.div
@@ -503,18 +500,18 @@ export default function Career() {
             viewport={{ once: true }}
           >
             {[
-              { title: 'Health Insurance', desc: 'Top-tier medical cover for you and your family', icon: '🏥' },
-              { title: 'EPF & Bonuses', desc: 'Provident fund contributions and yearly bonuses', icon: '💰' },
-              { title: 'Flexible Work', desc: 'Hybrid/remote-first with flexible working hours', icon: '🏠' },
-              { title: 'Learning Stipend', desc: 'Subsidies for AI/ML certifications and courses', icon: '📚' },
-              { title: 'Equity Options', desc: 'Stock options for early stage team members', icon: '📈' },
-              { title: 'Unlimited PTO', desc: 'Flexible time off and wellness leave policy', icon: '✈️' },
-              { title: 'Workspace Setup', desc: 'Allowance for ergonomic chairs and desks', icon: '🖥️' },
-              { title: 'Team Outings', desc: 'Regular team dinners and engineering offsites', icon: '🎉' },
+              { title: 'Health & Wellness Cover', desc: 'Comprehensive medical insurance for employees and families', icon: '🏥' },
+              { title: 'EPF & Performance Bonus', desc: 'Statutory provident fund contributions and performance incentives', icon: '💰' },
+              { title: 'Flexible Hybrid Model', desc: 'Modern collaborative workplace with flexible remote working', icon: '🏠' },
+              { title: 'Upskilling & Certification', desc: 'Stipends for AI/ML certifications, cloud exams, and courses', icon: '📚' },
+              { title: 'Top-Tier Tech Stack', desc: 'High-performance workstations, GPU cloud access, and AI tools', icon: '🖥️' },
+              { title: 'Paid Leave & Wellness Days', desc: 'Annual paid time off, sick leave, and mental wellness breaks', icon: '✈️' },
+              { title: 'Workspace Support', desc: 'Ergonomic workstation and connectivity allowances', icon: '⚡' },
+              { title: 'Hackathons & Offsites', desc: 'Regular engineering hack days, AI demos, and team offsites', icon: '🎉' },
             ].map((benefit, idx) => (
               <motion.div
                 key={idx}
-                className="p-6 rounded-xl border border-slate-200 bg-white hover:border-blue-500 transition-all"
+                className="p-6 rounded-xl border border-slate-200 bg-white hover:border-blue-500 transition-all dark:bg-slate-900 dark:border-slate-800"
                 variants={itemVariants}
                 whileHover={{
                   y: -4,
@@ -523,7 +520,7 @@ export default function Career() {
               >
                 <div className="text-3xl mb-3">{benefit.icon}</div>
                 <h3 className="font-bold text-foreground mb-1">{benefit.title}</h3>
-                <p className="text-sm text-slate-600">{benefit.desc}</p>
+                <p className="text-sm text-slate-600 dark:text-slate-400">{benefit.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -570,7 +567,10 @@ export default function Career() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <Button className="bg-white text-blue-600 hover:bg-slate-100 px-8 py-3 font-semibold rounded-lg">
+            <Button
+              onClick={() => document.getElementById('open-positions')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-white text-blue-600 hover:bg-slate-100 px-8 py-3 font-semibold rounded-lg cursor-pointer shadow-xl"
+            >
               View All Jobs
             </Button>
           </motion.div>

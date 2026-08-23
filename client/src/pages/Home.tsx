@@ -137,17 +137,17 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a
-                href="/contact"
-                className="px-10 py-4 bg-white text-blue-600 rounded-xl font-bold hover:bg-slate-100 transition-colors shadow-xl"
+              <motion.button
+                onClick={() => window.dispatchEvent(new CustomEvent("open-booking"))}
+                className="px-10 py-4 bg-white text-blue-600 rounded-xl font-bold hover:bg-slate-100 transition-colors shadow-xl cursor-pointer"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Book a Free Consultation
-              </motion.a>
+              </motion.button>
               <motion.a
-                href="/career"
-                className="px-10 py-4 border-2 border-white/30 text-white rounded-xl font-bold hover:bg-white/10 transition-colors"
+                href="/career#open-positions"
+                className="px-10 py-4 border-2 border-white/30 text-white rounded-xl font-bold hover:bg-white/10 transition-colors inline-flex items-center justify-center cursor-pointer"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
