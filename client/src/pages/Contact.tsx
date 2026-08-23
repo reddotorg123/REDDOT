@@ -232,23 +232,6 @@ export default function Contact() {
             Have a question or ready to start your next project? We'd love to
             hear from you and discuss how we can help transform your business.
           </motion.p>
-
-          {/* Floating Scroll Indicator */}
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="mt-12"
-          >
-            <div className="flex justify-center">
-              <div className="w-6 h-10 border-2 border-blue-600 rounded-full flex items-start justify-center p-2">
-                <motion.div
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="w-1 h-2 bg-blue-600 rounded-full"
-                />
-              </div>
-            </div>
-          </motion.div>
         </motion.div>
       </section>
 

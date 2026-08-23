@@ -224,21 +224,6 @@ const Hero = memo(function Hero() {
           </motion.div>
         </motion.div>
       </motion.div>
-
-      {/* Scroll Indicator — Positioned safely at the bottom of the section */}
-      <motion.div
-        className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 z-10"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <div className="w-6 h-10 border-2 border-slate-400/50 dark:border-slate-600 rounded-full flex items-start justify-center p-1.5">
-          <motion.div
-            className="w-1.5 h-2.5 bg-blue-600 dark:bg-cyan-400 rounded-full"
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
-        </div>
-      </motion.div>
     </section>
   );
 });
